@@ -1,4 +1,4 @@
-﻿namespace BusLiner.Domain.Interfaces
+﻿namespace BusLiner.Domain.Interfaces.Repositories
 {
     public interface IBaseRepository<T> where T : class
     {
