@@ -8,6 +8,6 @@ namespace BusLiner.Application.Features.Rides.Queries.GetRidesByOptions
     {
         public string From { get; set; } = string.Empty;
         public string To { get; set; } = string.Empty;
-        public DateOnly DepartureDate { get; set; }
+        public DateTime DepartureDate { get; set; }
     }
 }

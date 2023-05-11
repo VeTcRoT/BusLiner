@@ -16,7 +16,7 @@
     <header class="header">
         <div class="header__wrap">
             <div class="header__container">
-                <a href="" class="header__logo"><img src="images/logo.png" alt="logo"></a>
+                <a asp-controller="Home" asp-action="Index" class="header__logo"><img src="images/logo.png" alt="logo"></a>
                 <div class="header__menu menu">
                     <div class="menu__icon">
                         <span></span>
@@ -46,14 +46,6 @@
         </div>
         <div class="header__image">
             <img src="images/hero-image.jpg" alt="">
-        </div>
-        <div class="header__form">
-            <form action="" method="get">
-                <input type="text" placeholder="Звідки" class="header__form-from" required>
-                <input type="text" placeholder="Куди" class="header__form-to" required>
-                <input type="date" placeholder="Дата" class="header__form-date" onkeydown="return false">
-                <button type="submit" class="header__form-button">Пошук<i class="fa-solid fa-magnifying-glass"></i></button>
-            </form>
         </div>
     </header>
         @RenderBody()

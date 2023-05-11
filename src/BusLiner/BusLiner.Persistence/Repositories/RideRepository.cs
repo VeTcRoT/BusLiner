@@ -13,9 +13,11 @@ namespace BusLiner.Persistence.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task<IEnumerable<Ride>?> GetRidesByQueryAsync(string from, string to, DateOnly departureDate)
+        public async Task<IEnumerable<Ride>?> GetRidesByQueryAsync(string from, string to, DateTime departureDate)
         {
-            var rides = await (_dbContext.Rides.Where(r => DateOnly.Parse(r.DepartureTime.ToString("dd/MM/yyyy")) == departureDate
+
+            var rides = await (_dbContext.Rides.Include(r => r.DeparturePlace).Include(r => r.ArrivalPlace)
+                .Where(r => r.DepartureTime.Date == departureDate.Date
                 && r.DeparturePlace.City == from && r.ArrivalPlace.City == to)).ToListAsync();
 
             return rides;

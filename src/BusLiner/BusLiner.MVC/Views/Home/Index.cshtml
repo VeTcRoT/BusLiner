@@ -1,9 +1,15 @@
-﻿@using System.Text.RegularExpressions;
-@model IEnumerable<Ride>
+﻿@model IEnumerable<Ride>
 @{
     System.Globalization.CultureInfo culture = new System.Globalization.CultureInfo("uk-UA");
 }
-
+<div class="header__form">
+    <form asp-controller="Tickets" asp-action="Index" method="post">
+        <input type="text" name="From" placeholder="Звідки" class="header__form-from" required>
+        <input type="text" name="To" placeholder="Куди" class="header__form-to" required>
+        <input type="date" name="DepartureDate" placeholder="yyyy-mm-dd" class="header__form-date" onkeydown="return false">
+        <button type="submit" class="header__form-button">Пошук<i class="fa-solid fa-magnifying-glass"></i></button>
+    </form>
+</div>
 <main class="maincontent">
     <div class="maincontent__wrap">
         <div class="maincontent__wrap-pros">
@@ -36,7 +42,7 @@
                     {
                         var departureTime = Regex.Replace(ride.ArrivalTime.ToString("dd MMM, ddd"), @"\.(.)|\b(.)", m => m.Groups[1].Success ? m.Groups[1].Value : m.Groups[2].Value.ToUpper());
                         var arrivalTime = Regex.Replace(ride.ArrivalTime.ToString("dd MMM, ddd"), @"\.(.)|\b(.)", m => m.Groups[1].Success ? m.Groups[1].Value : m.Groups[2].Value.ToUpper());
-                        
+
                         <div class="tickets-content__tickets-ticket">
                             <div class="tickets-content__tickets-ticket-content">
                                 <div class="tickets-content__tickets-ticket-places">
@@ -86,7 +92,29 @@
                             </div>
                         </div>
                     }
+                    <div class="maincontent__subscription">
+                        <div class="maincontent__subscription-title">
+                            <div class="maincontent__subscription-title-icon"><i class="fa-solid fa-envelope-open-text"></i></div>
+                            <div class="maincontent__subscription-title-icon-text">
+                                <div class="maincontent__subscription-title-icon-text-title">Знижки до 70% на поїздки автобусом</div>
+                                <div class="maincontent__subscription-title-icon-text-subtitle">Закриті розпродажі для підписників та ідеї бюджетних подорожей</div>
+                            </div>
+                        </div>
+                        <div class="maincontent__subscription-form">
+                            <div class="maincontent__subscription-form-form">
+                                <form action="" class="">
+                                    <input class="maincontent__subscription-form-form-email" type="email" placeholder="Email" required>
+                                    <input class="maincontent__subscription-form-form-submit" type="submit" value="Підписатися">
+                                </form>
+                            </div>
+                            <div class="maincontent__subscription-form-agree">
+                                <input type="checkbox">
+                                <div class="maincontent__subscription-form-agree"><span>Даю згоду на <span class="maincontent__subscription-form-agree-red">обробку персональних даних</span></span></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
 </main>
