@@ -23,9 +23,9 @@ namespace BusLiner.Application.Features.Rides.Queries.GetRidesByOptions
                 .NotNull()
                 .Must(BeAValidDate).WithMessage("{PropertyName} enetered in wrong format.");
         }
-        private bool BeAValidDate(DateOnly date)
+        private bool BeAValidDate(DateTime date)
         {
-            return !date.Equals(default(DateOnly));
+            return !date.Equals(default(DateTime));
         }
     }
 }
