@@ -7,7 +7,7 @@ using MediatR;
 
 namespace BusLiner.Application.Features.Rides.Queries.GetRidesByOptions
 {
-    public class GetRidesByOptionsQueryHandler : IRequestHandler<GetRidesByOptionsQuery, IEnumerable<GetRideByIdDto>>
+    public class GetRidesByOptionsQueryHandler : IRequestHandler<GetRidesByOptionsQuery, IEnumerable<Ride>>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
@@ -18,7 +18,7 @@ namespace BusLiner.Application.Features.Rides.Queries.GetRidesByOptions
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<GetRideByIdDto>> Handle(GetRidesByOptionsQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<Ride>> Handle(GetRidesByOptionsQuery request, CancellationToken cancellationToken)
         {
             var validator = new GetRidesByOptionsQueryValidator();
             var validationResult = await validator.ValidateAsync(request);
@@ -26,12 +26,12 @@ namespace BusLiner.Application.Features.Rides.Queries.GetRidesByOptions
             if (validationResult.Errors.Count > 0)
                 throw new ValidationException(validationResult);
 
-            var rides = await _unitOfWork.RideRepository.GetRidesByQuery(request.From, request.To, request.DepartureDate);
+            var rides = await _unitOfWork.RideRepository.GetRidesByQueryAsync(request.From, request.To, request.DepartureDate);
 
             if (rides == null)
                 throw new NotFoundException(nameof(Ride), new { From = request.From, To = request.To, DepartureDate = request.DepartureDate });
 
-            return _mapper.Map<IEnumerable<GetRideByIdDto>>(rides);
+            return rides;
         }
     }
 }

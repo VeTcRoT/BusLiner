@@ -1,1 +1,92 @@
-﻿<h1>Hello World</h1>
+﻿@using System.Text.RegularExpressions;
+@model IEnumerable<Ride>
+@{
+    System.Globalization.CultureInfo culture = new System.Globalization.CultureInfo("uk-UA");
+}
+
+<main class="maincontent">
+    <div class="maincontent__wrap">
+        <div class="maincontent__wrap-pros">
+            <div class="maincontent__wrap-pros-single">
+                <div class="maincontent__wrap-pros-single-icon"><i class="fa-solid fa-notes-medical"></i></div>
+                <div class="maincontent__wrap-pros-single-title">Здоров'я та безпека</div>
+                <div class="maincontent__wrap-pros-single-text">Піклуйтеся про свою безпеку й безпеку інших пасажирів під час подорожі з нами.</div>
+            </div>
+            <div class="maincontent__wrap-pros-single">
+                <div class="maincontent__wrap-pros-single-icon"><i class="fa-brands fa-envira"></i></div>
+                <div class="maincontent__wrap-pros-single-title">Турбота про довкілля</div>
+                <div class="maincontent__wrap-pros-single-text">Автобуси викидають мінімум вуглекислих газів у розрахунку на пасажиро-кілометр.</div>
+            </div>
+            <div class="maincontent__wrap-pros-single">
+                <div class="maincontent__wrap-pros-single-icon"><i class="fa-solid fa-mug-hot"></i></div>
+                <div class="maincontent__wrap-pros-single-title">Напої в автобусі</div>
+                <div class="maincontent__wrap-pros-single-text">Під час поїздки вам буде запропоновано кава, чай та холодні напої.</div>
+            </div>
+            <div class="maincontent__wrap-pros-single">
+                <div class="maincontent__wrap-pros-single-icon"><i class="fa-solid fa-wifi"></i></div>
+                <div class="maincontent__wrap-pros-single-title">Швидкісний WI-FI</div>
+                <div class="maincontent__wrap-pros-single-text">В автобусі передбачено безкоштовний 4G інтернет зі швидкістю до 150 Мбіт/с</div>
+            </div>
+        </div>
+        <div class="maincontent__wrap-popular_tickets">
+            <div class="maincontent__wrap-popular-tickets-title">Найпопулярніші поїздки:</div>
+            <div class="maincontent__wrap-popular_tickets-content">
+                <div class="tickets-content__tickets">
+                    @foreach (Ride ride in Model)
+                    {
+                        var departureTime = Regex.Replace(ride.ArrivalTime.ToString("dd MMM, ddd"), @"\.(.)|\b(.)", m => m.Groups[1].Success ? m.Groups[1].Value : m.Groups[2].Value.ToUpper());
+                        var arrivalTime = Regex.Replace(ride.ArrivalTime.ToString("dd MMM, ddd"), @"\.(.)|\b(.)", m => m.Groups[1].Success ? m.Groups[1].Value : m.Groups[2].Value.ToUpper());
+                        
+                        <div class="tickets-content__tickets-ticket">
+                            <div class="tickets-content__tickets-ticket-content">
+                                <div class="tickets-content__tickets-ticket-places">
+                                    <div class="tickets-content__tickets-ticket-places-from">
+                                        <div class="tickets-content__tickets-ticket-places-from-city">@ride.DeparturePlace.Station</div>
+                                        <div class="tickets-content__tickets-ticket-places-from-street">@ride.DeparturePlace.Street</div>
+                                    </div>
+                                    <div class="tickets-content__tickets-ticket-places-to">
+                                        <div class="tickets-content__tickets-ticket-places-to-city">@ride.ArrivalPlace.Station</div>
+                                        <div class="tickets-content__tickets-ticket-places-to-street">@ride.ArrivalPlace.Street</div>
+                                    </div>
+                                </div>
+                                <div class="tickets-content__tickets-ticket-when">
+                                    <div class="tickets-content__tickets-ticket-when-from_time">
+                                        <div class="tickets-content__tickets-ticket-when-from_time-time">@ride.DepartureTime.ToString("HH:mm") <i class="fa-solid fa-van-shuttle"></i></div>
+                                        <div class="tickets-content__tickets-ticket-when-from_time-day">@departureTime</div>
+                                    </div>
+                                    <div class="tickets-content__tickets-ticket-when-line"></div>
+                                    <div class="tickets-content__tickets-ticket-when-time_in_trip">
+                                        <div class="tickets-content__tickets-ticket-when-time_in_trip-icon"><i class="fa-regular fa-clock"></i></div>
+                                        <div class="tickets-content__tickets-ticket-when-time_in_trip-time">@((ride.ArrivalTime - ride.DepartureTime).ToString("hh\\:mm"))</div>
+                                    </div>
+                                    <div class="tickets-content__tickets-ticket-when-line"></div>
+                                    <div class="tickets-content__tickets-ticket-when-to_time">
+                                        <div class="tickets-content__tickets-ticket-when-to_time-time"><i class="fa-solid fa-location-dot"></i> @ride.ArrivalTime.ToString("HH:mm")</div>
+                                        <div class="tickets-content__tickets-ticket-when-to_time-day">@arrivalTime</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tickets-content__tickets-ticket-buy">
+                                <div class="tickets-content__tickets-ticket-buy-price">@ride.Price грн</div>
+                                <div class="tickets-content__tickets-ticket-buy-form">
+                                    <form action="">
+                                        <button class="tickets-content__tickets-ticket-buy-form-button" type="submit">
+                                            <div class="tickets-content__tickets-ticket-buy-form-button-content">
+                                                <div class="tickets-content__tickets-ticket-buy-form-button-content-text">
+                                                    Купити
+                                                </div>
+                                                <div class="tickets-content__tickets-ticket-buy-form-button-content-icon">
+                                                    <i class="fa-solid fa-cart-shopping"></i>
+                                                </div>
+                                            </div>
+                                        </button>
+                                    </form>
+                                    <div class="tickets-content__tickets-ticket-buy-form-tickets_left">Залишилось квитків: @ride.TicketsAvailable шт.</div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+</main>
