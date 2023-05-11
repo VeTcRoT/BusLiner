@@ -1,4 +1,6 @@
-﻿namespace BusLiner.Application.Exceptions
+﻿using FluentValidation.Results;
+
+namespace BusLiner.Application.Exceptions
 {
     public class ValidationException : Exception
     {
