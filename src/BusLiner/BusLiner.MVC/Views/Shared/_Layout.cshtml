@@ -1,13 +1,104 @@
 ﻿<!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="icon" href="images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/css/styles.css">
+    <title>Головна</title>
 </head>
-<body>
-    <div>
+<body class="body">
+    <header class="header">
+        <div class="header__wrap">
+            <div class="header__container">
+                <a href="" class="header__logo"><img src="images/logo.png" alt="logo"></a>
+                <div class="header__menu menu">
+                    <div class="menu__icon">
+                        <span></span>
+                    </div>
+                    <nav class="menu__body">
+                        <ul class="menu__list">
+                            <li><a href="" class="menu__link">Головна</a></li>
+                            <li><a href="" class="menu__link">Пошук білетів</a></li>
+                            <li><a href="" class="menu__link">Про нас</a></li>
+                            <li class="menu_submenu-link">
+                                <a href="#" class="menu__link">Додатково</a>
+                                <span class="menu__arrow"></span>
+                                <ul class="menu__sub-list">
+                                    <li>
+                                        <a href="#" class="menu__sub-link">Замовлення поїздки</a>
+                                    </li>
+                                    <li>
+                                        <a href="" class="menu__sub-link">Співпраця з іншими компаніями</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="#" class="menu__link"><i class="fa fa-sign-in" aria-hidden="true"></i> Увійти</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="header__image">
+            <img src="images/hero-image.jpg" alt="">
+        </div>
+        <div class="header__form">
+            <form action="" method="get">
+                <input type="text" placeholder="Звідки" class="header__form-from" required>
+                <input type="text" placeholder="Куди" class="header__form-to" required>
+                <input type="date" placeholder="Дата" class="header__form-date" onkeydown="return false">
+                <button type="submit" class="header__form-button">Пошук<i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+        </div>
+    </header>
         @RenderBody()
-    </div>
+    <footer class="footer">
+        <div class="footer__wrap">
+            <div class="footer__about-us">
+                <div class="footer__about-us-title">Про нас</div>
+                <div class="footer__about-us-text">
+                    Busliner - це інноваційна компанія, яка займається міжнародними пасажирськими перевезеннями з 2010 року. Ми спеціалізуємося на забезпеченні клієнтам високоякісних послуг з перевезення, які забезпечують комфорт і безпеку наших пасажирів.
+                </div>
+            </div>
+            <div class="footer__headerlinks">
+                <div class="footer__headerlinks-title">Додатково</div>
+                <div class="footer__headerlinks-body">
+                    <ul class="footer__headerlinks-body-links">
+                        <li><a href="#" class="footer__headerlinks-body-links-link">Замовлення поїздки</a></li>
+                        <li><a href="#" class="footer__headerlinks-body-links-link">Співпраця з іншими компаніями</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__contacts">
+                <div class="footer__contacts-title">Контактні дані</div>
+                <div class="footer__contacts-phone">
+                    <div class="footer__contacts-phone-icon"><i class="fa fa-phone" aria-hidden="true"></i></div>
+                    <div class="footer__contacts-phone-phone">
+                        <div class="footer__contacts-phone-phone-number">+38(067) 148-82-28</div>
+                        <div class="footer__contacts-phone-phone-available">Пн- Пт, 09.00 - 18:00</div>
+                    </div>
+                </div>
+                <div class="footer__contacts-email">
+                    <div class="footer__contacts-email-icon"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+                    <div class="footer__contacts-email-email">
+                        <div class="footer__contacts-email-email-address"><a href="mailto:tesseras@localhost.com">busliner@localhost.com</a></div>
+                        <div class="footer__contacts-email-email-duration">Ми дамо відповідь протягом 24 годин</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer__end">
+            <div class="footer__end-text">
+                © 2023 Busliner. Всі права захищені
+            </div>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+    <script src="~/js/main.js"></script>
 </body>
 </html>

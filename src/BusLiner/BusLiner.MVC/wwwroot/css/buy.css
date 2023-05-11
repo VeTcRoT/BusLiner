@@ -1,0 +1,358 @@
+.ticket_buy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    margin: 140px 0 20px 0;
+}
+
+.ticket_buy__wrap {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.ticket_buy .tickets-content__tickets-ticket-content {
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.ticket_buy .tickets-content__tickets-ticket-when-time_in_trip {
+    top: 0;
+}
+
+.ticket_buy .tickets-content__tickets-ticket-when {
+    align-items: flex-start;
+}
+
+.ticket_buy .tickets-content__tickets-ticket-places {
+    gap: 20px;
+}
+
+.ticket_buy__form {
+    max-width: 650px;
+    width: 100%;
+}
+
+.ticket_buy__form form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.ticket_buy__form-passengers, .ticket_buy__form-additional_baggage, .ticket_buy__form-contacts, .ticket_buy__form-tickets_count {
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.ticket_buy__form-tickets_count-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ticket_buy__form-tickets_count-content-counter {
+    display: flex;
+    align-items: center;
+}
+
+.ticket_buy__form-passengers-title, .ticket_buy__form-additional_baggage-title, .ticket_buy__form-contacts-title, .ticket_buy__form-tickets_count-title {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.ticket_buy__form-additional_baggage-title {
+    margin-bottom: 0;
+}
+
+.ticket_buy__form-passengers-title-number, .ticket_buy__form-additional_baggage-title-number, .ticket_buy__form-contacts-title-number, .ticket_buy__form-tickets_count-title-number {
+    padding: 5px 10px;
+    background: #016779;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 18px;
+}
+
+.ticket_buy__form-passengers-title-title, .ticket_buy__form-additional_baggage-title-title, .ticket_buy__form-contacts-title-title, .ticket_buy__form-tickets_count-title-title {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.ticket_buy__form-passengers-name-inputs {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.ticket_buy__form-passengers-name-inputs-name, .ticket_buy__form-passengers-name-inputs-surname, .ticket_buy__form-contacts-inputs-email, .ticket_buy__form-contacts-inputs-phone {
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid grey;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.ticket_buy__form-passengers-name-inputs label, .ticket_buy__form-contacts-inputs label {
+    display: block;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+.ticket_buy__form-additional_baggage {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.ticket_buy__form-additional_baggage-included {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.ticket_buy__form-additional_baggage-included-icon i {
+    color: #fff;
+    font-size: 35px;
+    padding: 7.5px 15px;
+    background: #0094ae;
+    border-radius: 5px;
+}
+
+.ticket_buy__form-additional_baggage-included-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.ticket_buy__form-additional_baggage-included-text-title {
+    font-weight: bold;
+}
+
+.ticket_buy__form-additional_baggage-included-text-first_item, .ticket_buy__form-additional_baggage-included-text-second_item {
+    font-size: 14px;
+}
+
+.ticket_buy__form-additional_baggage-add-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding: 15px;
+    transition: border-radius 0.15s ease-out;
+}
+
+.ticket_buy__form-additional_baggage-add-header-icon {
+    font-size: 40px;
+    color: rgb(157, 155, 155);
+}
+
+.ticket_buy__form-additional_baggage-add-header-arrow_icon {
+    margin-left: auto;
+}
+
+.ticket_buy__form-additional_baggage-add-header-arrow_icon i {
+    transition: transform 0.2s ease-out;
+}
+
+.ticket_buy__form-additional_baggage-add-header:hover {
+    cursor: pointer;
+}
+
+.ticket_buy__form-additional_baggage-add-header-text-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.ticket_buy__form-additional_baggage-add-header-text-added {
+    padding-top: 5px;
+}
+
+.ticket_buy__form-additional_baggage-add-options {
+    display: none;
+    border: 1px solid grey;
+    border-radius: 0 0 10px 10px;
+    border-top: 0;
+}
+
+.ticket_buy__form-additional_baggage-add-options-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+.ticket_buy__form-additional_baggage-add-options-option-text {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.ticket_buy__form-additional_baggage-add-options-option-text-icon i {
+    font-size: 40px;
+    color: rgb(157, 155, 155);
+    
+}
+
+.ticket_buy__form-additional_baggage-add-options-option-text-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.ticket_buy__form-additional_baggage-add-options-option-add {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.ticket_buy__form-additional_baggage-add-options-option-add-price {
+    font-weight: bold;
+}
+
+.ticket_buy__form-additional_baggage-add-options-option-add-subtract_add-value input,
+.ticket_buy__form-tickets_count-content-counter-value input {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+    text-align: center;
+    max-width: 30px;
+    border: 0;
+    font-size: 18px;
+    padding: 7px 0;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+}
+
+.ticket_buy__form-additional_baggage-add-options-option-add-subtract_add-value input::-webkit-inner-spin-button,
+.ticket_buy__form-additional_baggage-add-options-option-add-subtract_add-value input::-webkit-outer-spin-button,
+.ticket_buy__form-tickets_count-content-counter-value input::-webkit-inner-spin-button, 
+.ticket_buy__form-tickets_count-content-counter-value input::-webkit-outer-spin-button{
+    -webkit-appearance: none;
+}
+
+.ticket_buy__form-tickets_count-content-text {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.ticket_buy__form-tickets_count-content-text span {
+    font-weight: normal;
+    font-size: 16px;
+}
+
+.ticket_buy__form-additional_baggage-add-options-option-add-subtract_add {
+    display: flex;
+    align-items: center;
+}
+
+.ticket_buy__form-additional_baggage-add-options-option-add-subtract_add-subtract, 
+.ticket_buy__form-additional_baggage-add-options-option-add-subtract_add-add,
+.ticket_buy__form-tickets_count-content-counter-subtract,
+.ticket_buy__form-tickets_count-content-counter-add {
+    padding: 6px 12px;
+    font-size: 22px;
+    font-weight: 300;
+}
+
+.ticket_buy__form-additional_baggage-add-options-option-add-subtract_add-subtract:hover, 
+.ticket_buy__form-additional_baggage-add-options-option-add-subtract_add-add:hover,
+.ticket_buy__form-tickets_count-content-counter-subtract:hover,
+.ticket_buy__form-tickets_count-content-counter-add:hover {
+    cursor: pointer;
+    background: #e6e6e6;
+}
+
+.ticket_buy__form-additional_baggage-add-options-option-add-subtract_add-subtract,
+.ticket_buy__form-tickets_count-content-counter-subtract {
+    border: 1px solid grey;
+    border-radius: 10px 0 0 10px;
+}
+
+.ticket_buy__form-additional_baggage-add-options-option-add-subtract_add-add,
+.ticket_buy__form-tickets_count-content-counter-add {
+    border: 1px solid grey;
+    border-radius: 0 10px 10px 0;
+}
+
+.ticket_buy__form-contacts-inputs {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.ticket_buy__ticket-price {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    margin: 20px 0;
+}
+
+.ticket_buy__ticket-price-text span, .ticket_buy__ticket-price-price{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.ticket_buy__ticket-buy-button {
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: 0;
+    background: orange;
+    transition: background 0.3s ease-out;
+    color: #fff;
+    font-weight: bold;
+}
+
+.ticket_buy__ticket-buy-button:hover {
+    background: rgb(218, 142, 1);
+    cursor: pointer;
+}
+
+.ticket_buy__form-additional_baggage-included-text-first_item, .ticket_buy__form-additional_baggage-included-text-second_item {
+    line-height: 18px;
+}
+
+@media (max-width: 1060px) {
+    .ticket_buy__wrap {
+        flex-direction: column;
+        gap: 40px;
+        max-width: 700px;
+    }
+    .ticket_buy__form {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 548px) {
+    .ticket_buy__form-additional_baggage-add-options-option-add {
+        flex-direction: column;
+        gap: 5px;
+        align-items: center;
+    }
+}
+
+@media (max-width: 430px) {
+    .ticket_buy__form-additional_baggage-add-options-option {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+    .ticket_buy__form-additional_baggage-add-options-option-add {
+        flex-direction: row;
+    }
+    .ticket_buy__form-passengers-name-inputs-name, .ticket_buy__form-passengers-name-inputs-surname, .ticket_buy__form-contacts-inputs-email, .ticket_buy__form-contacts-inputs-phone {
+        font-size: 16px;
+    }
+}
