@@ -96,6 +96,53 @@ window.addEventListener('load', e => {
 
     changeImage()
 
+    function citySuggestInit() {
+        let inputFrom = document.querySelector('.header__form-from');
+        let citiesWrapFrom = document.querySelector('.header__form-from-cities');
+
+        citySuggestions(inputFrom, citiesWrapFrom)
+
+        let inputTo = document.querySelector('.header__form-to');
+        let citiesWrapTo = document.querySelector('.header__form-to-cities');
+
+        citySuggestions(inputTo, citiesWrapTo)
+    }
+
+    function citySuggestions(input, citiesWrap) {
+        if (input != null) {
+
+            let cities = citiesWrap.querySelectorAll('div')
+
+            if (cities) {
+                input.addEventListener('input', e => {
+                    if (e.target.value == '') {
+                        citiesWrap.style.display = 'none';
+                    }
+                    else {
+                        cities.forEach(element => {
+
+                            element.addEventListener('click', event => {
+                                e.target.value = event.target.innerHTML;
+                                citiesWrap.style.display = 'none';
+                            });
+
+                            if (element.innerHTML.toLowerCase().includes(e.target.value.toLowerCase())) {
+                                citiesWrap.style.display = 'block';
+                                element.style.display = 'block'
+                            }
+                            else {
+                                element.style.display = 'none'
+                            }
+                        });
+                    }
+
+                });
+            }
+        }
+    }
+
+    citySuggestInit()
+
     // Tickets
 
     function showSortingOptions() {

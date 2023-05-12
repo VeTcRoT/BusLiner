@@ -1,4 +1,6 @@
-﻿using BusLiner.Application.Features.Rides.Queries.GetRidesByOptions;
+﻿using BusLiner.Application.Features.ArrivalPlaces.ListAllArrivalPlaces;
+using BusLiner.Application.Features.DeparturePlaces.ListAllDeparturePlaces;
+using BusLiner.Application.Features.Rides.Queries.GetRidesByOptions;
 using BusLiner.MVC.ViewModel;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -16,16 +18,17 @@ namespace BusLiner.MVC.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(GetRidesByOptionsQuery request)
         {
-            Console.WriteLine(request.From);
-            Console.WriteLine(request.To);
-            Console.WriteLine(request.DepartureDate);
-
             var rides = await _mediator.Send(request);
+
+            var departurePlaces = await _mediator.Send(new ListAllDeparturePlacesQuery());
+            var arrivalPlaces = await _mediator.Send(new ListAllArrivalPlacesQuery());
 
             var vm = new TicketsVM()
             {
                 From = request.From,
                 To = request.To,
+                DeparturePlaces = departurePlaces,
+                ArrivalPlaces = arrivalPlaces,
                 DepartureDate = request.DepartureDate,
                 Rides = rides,
             };

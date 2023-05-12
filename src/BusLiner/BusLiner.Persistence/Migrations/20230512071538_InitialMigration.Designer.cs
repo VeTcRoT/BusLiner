@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BusLiner.Persistence.Migrations
 {
     [DbContext(typeof(BusLinerDbContext))]
-    [Migration("20230511101015_InitialMigration")]
+    [Migration("20230512071538_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />

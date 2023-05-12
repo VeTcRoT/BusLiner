@@ -90,6 +90,10 @@ input:focus{
     margin-left: 10px;
 }
 
+.header__form-button::hover {
+    cursor: pointer;
+}
+
 .maincontent__wrap-pros {
     display: flex;
     text-align: center;
@@ -213,6 +217,32 @@ input:focus{
 .maincontent__subscription-form-agree-red {
     color: rgb(244, 46, 46);
     border-bottom: 1px dashed rgb(244, 46, 46);      
+}
+
+.header__form-from-wrap, .header__form-to-wrap {
+    position: relative;
+}
+
+.header__form-from-cities, .header__form-to-cities {
+    position: absolute;
+    background: #fff;
+    padding: 10px;
+    top: 50px;
+    line-height: 25px;
+    font-size: 17px;
+    border-radius: 5px;
+    display: none;
+}
+
+.header__form-from-cities-city, .header__form-to-cities-city{
+    border-bottom: 1px solid red;
+    min-width: 100px;
+    display: none;
+}
+
+.header__form-from-cities-city:hover, .header__form-to-cities-city:hover {
+    cursor: pointer;
+    background: #d3d3d3;
 }
 
 @media (max-width: 999px) {

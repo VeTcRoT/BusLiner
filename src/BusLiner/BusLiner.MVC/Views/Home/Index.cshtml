@@ -1,12 +1,30 @@
-﻿@model IEnumerable<Ride>
+﻿@model HomeVM
 @{
     System.Globalization.CultureInfo culture = new System.Globalization.CultureInfo("uk-UA");
 }
 <div class="header__form">
-    <form asp-controller="Tickets" asp-action="Index" method="post">
-        <input type="text" name="From" placeholder="Звідки" class="header__form-from" required>
-        <input type="text" name="To" placeholder="Куди" class="header__form-to" required>
-        <input type="date" name="DepartureDate" placeholder="yyyy-mm-dd" class="header__form-date" onkeydown="return false">
+    <form asp-controller="Tickets" asp-action="Index" method="post" autocomplete="off">
+        <div class="header__form-from-wrap">
+            <input type="text" name="From" placeholder="Звідки" class="header__form-from" required>
+            <div class="header__form-from-cities">
+                @foreach (ListAllDeparturePlacesDto departurePlace in Model.DeparturePlaces)
+                {
+                    <div class="header__form-from-cities-city">@departurePlace.City</div>
+                }
+            </div>
+        </div>
+        
+        <div class="header__form-to-wrap">
+            <input type="text" name="To" placeholder="Куди" class="header__form-to" required>
+            <div class ="header__form-to-cities">
+                @foreach (ListAllArrivalPlacesDto arrivalPlace in Model.ArrivalPlaces)
+                {
+                    <div class="header__form-to-cities-city">@arrivalPlace.City</div>
+                }
+            </div>
+        </div>
+        
+        <input type="date" name="DepartureDate" placeholder="yyyy-mm-dd" class="header__form-date" onkeydown="return false" required>
         <button type="submit" class="header__form-button">Пошук<i class="fa-solid fa-magnifying-glass"></i></button>
     </form>
 </div>
@@ -38,7 +56,7 @@
             <div class="maincontent__wrap-popular-tickets-title">Найпопулярніші поїздки:</div>
             <div class="maincontent__wrap-popular_tickets-content">
                 <div class="tickets-content__tickets">
-                    @foreach (Ride ride in Model)
+                    @foreach (Ride ride in Model.Rides)
                     {
                         var departureTime = Regex.Replace(ride.ArrivalTime.ToString("dd MMM, ddd"), @"\.(.)|\b(.)", m => m.Groups[1].Success ? m.Groups[1].Value : m.Groups[2].Value.ToUpper());
                         var arrivalTime = Regex.Replace(ride.ArrivalTime.ToString("dd MMM, ddd"), @"\.(.)|\b(.)", m => m.Groups[1].Success ? m.Groups[1].Value : m.Groups[2].Value.ToUpper());
@@ -47,11 +65,13 @@
                             <div class="tickets-content__tickets-ticket-content">
                                 <div class="tickets-content__tickets-ticket-places">
                                     <div class="tickets-content__tickets-ticket-places-from">
-                                        <div class="tickets-content__tickets-ticket-places-from-city">@ride.DeparturePlace.Station</div>
+                                        <div class="tickets-content__tickets-ticket-places-from-city">@ride.DeparturePlace.City</div>
+                                        <div class="tickets-content__tickets-ticket-places-from-station">@ride.DeparturePlace.Station</div>
                                         <div class="tickets-content__tickets-ticket-places-from-street">@ride.DeparturePlace.Street</div>
                                     </div>
                                     <div class="tickets-content__tickets-ticket-places-to">
-                                        <div class="tickets-content__tickets-ticket-places-to-city">@ride.ArrivalPlace.Station</div>
+                                        <div class="tickets-content__tickets-ticket-places-to-city">@ride.ArrivalPlace.City</div>
+                                        <div class="tickets-content__tickets-ticket-places-to-station">@ride.ArrivalPlace.Station</div>
                                         <div class="tickets-content__tickets-ticket-places-to-street">@ride.ArrivalPlace.Street</div>
                                     </div>
                                 </div>
