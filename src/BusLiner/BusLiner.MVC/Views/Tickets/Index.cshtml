@@ -48,7 +48,7 @@
             @foreach (Ride ride in Model.Rides)
             {
                 Console.WriteLine(Model.Rides.Count());
-                var departureTime = Regex.Replace(ride.ArrivalTime.ToString("dd MMM, ddd"), @"\.(.)|\b(.)", m => m.Groups[1].Success ? m.Groups[1].Value : m.Groups[2].Value.ToUpper());
+                var departureTime = Regex.Replace(ride.DepartureTime.ToString("dd MMM, ddd"), @"\.(.)|\b(.)", m => m.Groups[1].Success ? m.Groups[1].Value : m.Groups[2].Value.ToUpper());
                 var arrivalTime = Regex.Replace(ride.ArrivalTime.ToString("dd MMM, ddd"), @"\.(.)|\b(.)", m => m.Groups[1].Success ? m.Groups[1].Value : m.Groups[2].Value.ToUpper());
 
                 <div class="tickets-content__tickets-ticket">

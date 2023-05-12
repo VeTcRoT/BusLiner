@@ -1,5 +1,5 @@
-﻿using BusLiner.Application.Features.ArrivalPlaces.ListAllArrivalPlaces;
-using BusLiner.Application.Features.DeparturePlaces.ListAllDeparturePlaces;
+﻿using BusLiner.Application.Features.ArrivalPlaces.Queries.ListAllArrivalPlaces;
+using BusLiner.Application.Features.DeparturePlaces.Queries.ListAllDeparturePlaces;
 using BusLiner.Application.Features.Rides.Queries.GetTopFiveRides;
 using BusLiner.MVC.ViewModel;
 using MediatR;

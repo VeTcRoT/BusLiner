@@ -4,7 +4,7 @@ using BusLiner.Domain.Entities;
 using BusLiner.Domain.Interfaces.Repositories;
 using MediatR;
 
-namespace BusLiner.Application.Features.DeparturePlaces.ListAllDeparturePlaces
+namespace BusLiner.Application.Features.DeparturePlaces.Queries.ListAllDeparturePlaces
 {
     public class ListAllDeparturePlacesQueryHandler : IRequestHandler<ListAllDeparturePlacesQuery, IEnumerable<ListAllDeparturePlacesDto>>
     {

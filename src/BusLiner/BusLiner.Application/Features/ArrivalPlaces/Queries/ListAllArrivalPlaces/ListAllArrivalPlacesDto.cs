@@ -1,4 +1,4 @@
-﻿namespace BusLiner.Application.Features.ArrivalPlaces.ListAllArrivalPlaces
+﻿namespace BusLiner.Application.Features.ArrivalPlaces.Queries.ListAllArrivalPlaces
 {
     public class ListAllArrivalPlacesDto
     {
