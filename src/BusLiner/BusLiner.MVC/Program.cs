@@ -1,6 +1,7 @@
 using BusLiner.Application;
 using BusLiner.Persistence;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,8 @@ builder.Services.AddDbContext<BusLinerDbContext>(options =>
 
 builder.Services.AddApplicationServices();
 builder.Services.AddPersistenceServices();
+
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 var app = builder.Build();
 

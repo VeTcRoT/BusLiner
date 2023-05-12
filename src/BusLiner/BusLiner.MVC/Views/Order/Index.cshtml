@@ -20,13 +20,13 @@
                         <div class="ticket_buy__form-passengers-name-inputs">
                             <div class="ticket_buy__form-passengers-name-inputs-name-wrap">
                                 <label for="firstname">Ім'я:</label>
-                                <input type="text" placeholder="Введіть ім'я" name="FirstName" asp-for="Order.FirstName" class="ticket_buy__form-passengers-name-inputs-name" id="firstname">
-                                <span asp-validation-for="Order.FirstName"></span>
+                                <input type="text" placeholder="Введіть ім'я" name="FirstName" asp-for="FirstName" class="ticket_buy__form-passengers-name-inputs-name" id="firstname">
+                                <span asp-validation-for="FirstName"></span>
                             </div>
                             <div class="ticket_buy__form-passengers-name-inputs-lastname-wrap">
                                 <label for="lastname">Прізвище:</label>
-                                <input type="text" placeholder="Введіть прізвище" name="LastName" asp-for="Order.LastName" class="ticket_buy__form-passengers-name-inputs-surname" id="lastname">
-                                <span asp-validation-for="Order.LastName"></span>
+                                <input type="text" placeholder="Введіть прізвище" name="LastName" asp-for="LastName" class="ticket_buy__form-passengers-name-inputs-surname" id="lastname">
+                                <span asp-validation-for="LastName"></span>
                             </div>
                         </div>
                     </div>
@@ -39,8 +39,8 @@
                     <div class="ticket_buy__form-contacts-inputs">
                         <div>
                             <label for="email">Email:</label>
-                            <input type="email" placeholder="Введіть email" name="Email" asp-for="Order.Email" class="ticket_buy__form-contacts-inputs-email" id="email">
-                            <span asp-validation-for="Order.Email"></span>
+                            <input type="email" placeholder="Введіть email" name="Email" asp-for="Email" class="ticket_buy__form-contacts-inputs-email" id="email">
+                            <span asp-validation-for="Email"></span>
                         </div>
                         <div>
                             <label for="phone">Телефон:</label>
@@ -58,8 +58,8 @@
                         <div class="ticket_buy__form-tickets_count-content-counter">
                             <div class="ticket_buy__form-tickets_count-content-counter-subtract"><i class="fa-solid fa-minus"></i></div>
                             <div class="ticket_buy__form-tickets_count-content-counter-value">
-                                <input type="number" name="TicketsOrdered" asp-for="Order.TicketsOrdered" min="1" max="@ticketsAvailable" readonly value="1">
-                                <span asp-validation-for="Order.TicketsOrdered"></span>
+                                <input type="number" name="TicketsOrdered" asp-for="TicketsOrdered" min="1" max="@ticketsAvailable" readonly value="1">
+                                <span asp-validation-for="TicketsOrdered"></span>
                             </div>
                             <div class="ticket_buy__form-tickets_count-content-counter-add"><i class="fa-solid fa-plus"></i></div>
                         </div>
@@ -101,8 +101,8 @@
                                     <div class="ticket_buy__form-additional_baggage-add-options-option-add-subtract_add">
                                         <div class="ticket_buy__form-additional_baggage-add-options-option-add-subtract_add-subtract"><i class="fa-solid fa-minus"></i></div>
                                         <div class="ticket_buy__form-additional_baggage-add-options-option-add-subtract_add-value">
-                                            <input type="number" name="AdditionalBaggage" asp-for="Order.AdditionalBaggage" min="0" readonly value="0">
-                                            <span asp-validation-for="Order.AdditionalBaggage"></span>
+                                            <input type="number" name="AdditionalBaggage" asp-for="AdditionalBaggage" min="0" readonly value="0">
+                                            <span asp-validation-for="AdditionalBaggage"></span>
                                         </div>
                                         <div class="ticket_buy__form-additional_baggage-add-options-option-add-subtract_add-add"><i class="fa-solid fa-plus"></i></div>
                                     </div>

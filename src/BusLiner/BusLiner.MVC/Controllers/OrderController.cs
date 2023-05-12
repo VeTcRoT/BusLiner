@@ -1,4 +1,5 @@
-﻿using BusLiner.Application.Features.Orders.Commands.CreateOrder;
+﻿using AutoMapper;
+using BusLiner.Application.Features.Orders.Commands.CreateOrder;
 using BusLiner.Application.Features.Rides.Queries.GetRideById;
 using BusLiner.Domain.Entities;
 using BusLiner.MVC.Extensions;
@@ -13,12 +14,14 @@ namespace BusLiner.MVC.Controllers
     {
         private readonly IMediator _mediator;
         private readonly IValidator<CreateOrderQuery> _validator;
+        private readonly IMapper _mapper;
         private static Ride Ride = null!;
 
-        public OrderController(IMediator mediator, IValidator<CreateOrderQuery> validator)
+        public OrderController(IMediator mediator, IValidator<CreateOrderQuery> validator, IMapper mapper)
         {
             _mediator = mediator;
             _validator = validator;
+            _mapper = mapper;
         }
 
         public async Task<IActionResult> Index(int rideId)
@@ -44,11 +47,9 @@ namespace BusLiner.MVC.Controllers
             {
                 validationResult.AddToModelState(ModelState);
 
-                var orderVm = new OrderVM()
-                {
-                    Ride = Ride,
-                    Order = request
-                };
+                var orderVm = _mapper.Map<OrderVM>(request);
+
+                orderVm.Ride = Ride;
 
                 return View("Index", orderVm);
             }
