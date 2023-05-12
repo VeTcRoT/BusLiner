@@ -35,15 +35,15 @@ namespace BusLiner.Application.Features.Orders.Commands.CreateOrder
                 .GreaterThanOrEqualTo(1).WithMessage("{PropertyName} should be greater or equals to 1.")
                 .LessThanOrEqualTo(5).WithMessage("{PropertyName} should be less or equals to 5.");
 
-            RuleFor(o => o.AdditionalBaggage)
-                .NotEmpty().WithMessage("{PropertyName} is required.");
+            //RuleFor(o => o.AdditionalBaggage)
+            //    .NotEmpty().WithMessage("{PropertyName} is required.");
 
             RuleFor(o => o)
                 .Must(IsAdditionalBaggageNumberValid);
         }
         private bool IsAdditionalBaggageNumberValid(CreateOrderQuery order)
         {
-            return !(order.TicketsOrdered * 2 >= order.AdditionalBaggage);
+            return order.TicketsOrdered * 2 >= order.AdditionalBaggage;
         }
     }
 }

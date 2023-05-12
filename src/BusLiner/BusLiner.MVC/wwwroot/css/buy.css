@@ -3,7 +3,8 @@
     align-items: center;
     justify-content: center;
     height: 100%;
-    margin: 140px 0 20px 0;
+    margin: 20px auto;
+    max-width: 1100px;
 }
 
 .ticket_buy__wrap {

@@ -1,4 +1,9 @@
-﻿using BusLiner.Application.Features.Rides.Queries.GetRideById;
+﻿using BusLiner.Application.Features.Orders.Commands.CreateOrder;
+using BusLiner.Application.Features.Rides.Queries.GetRideById;
+using BusLiner.Domain.Entities;
+using BusLiner.MVC.Extensions;
+using BusLiner.MVC.ViewModel;
+using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,17 +12,50 @@ namespace BusLiner.MVC.Controllers
     public class OrderController : Controller
     {
         private readonly IMediator _mediator;
+        private readonly IValidator<CreateOrderQuery> _validator;
+        private static Ride Ride = null!;
 
-        public OrderController(IMediator mediator)
+        public OrderController(IMediator mediator, IValidator<CreateOrderQuery> validator)
         {
             _mediator = mediator;
+            _validator = validator;
         }
 
         public async Task<IActionResult> Index(int rideId)
         {
             var ride = await _mediator.Send(new GetRideByIdQuery() { Id = rideId });
 
-            return View(ride);
+            Ride = ride;
+
+            var orderVm = new OrderVM() { Ride = ride };
+
+            return View(orderVm);
+        }
+
+        public async Task<IActionResult> Order(CreateOrderQuery request)
+        {
+            request.Total = Ride.Price * request.TicketsOrdered + request.AdditionalBaggage * 65;
+
+            request.RideId = Ride.Id;
+
+            var validationResult = await _validator.ValidateAsync(request);
+
+            if (!validationResult.IsValid) 
+            {
+                validationResult.AddToModelState(ModelState);
+
+                var orderVm = new OrderVM()
+                {
+                    Ride = Ride,
+                    Order = request
+                };
+
+                return View("Index", orderVm);
+            }
+
+            await _mediator.Send(request);
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }

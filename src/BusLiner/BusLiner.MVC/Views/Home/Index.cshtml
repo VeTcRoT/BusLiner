@@ -99,7 +99,7 @@
                                         <button class="tickets-content__tickets-ticket-buy-form-button" type="submit">
                                             <div class="tickets-content__tickets-ticket-buy-form-button-content">
                                                 <div class="tickets-content__tickets-ticket-buy-form-button-content-text">
-                                                    Купити
+                                                    <a asp-controller="Order" asp-action="Index" asp-route-rideId="@ride.Id">Купити</a>
                                                 </div>
                                                 <div class="tickets-content__tickets-ticket-buy-form-button-content-icon">
                                                     <i class="fa-solid fa-cart-shopping"></i>

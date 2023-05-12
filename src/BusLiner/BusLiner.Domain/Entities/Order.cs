@@ -10,6 +10,7 @@
         public int TicketsOrdered { get; set; }
         public int AdditionalBaggage { get; set; }
         public double Total { get; set; }
+        public int RideId { get; set; }
         public Ride Ride { get; set; } = null!;
     }
 }

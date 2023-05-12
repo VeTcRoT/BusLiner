@@ -12,6 +12,6 @@ namespace BusLiner.Application.Features.Orders.Commands.CreateOrder
         public int TicketsOrdered { get; set; }
         public int AdditionalBaggage { get; set; }
         public double Total { get; set; }
-        public Ride Ride { get; set; } = null!;
+        public int RideId { get; set; }
     }
 }

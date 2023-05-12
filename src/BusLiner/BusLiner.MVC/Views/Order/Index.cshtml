@@ -1,1 +1,155 @@
-﻿@model Ride
+﻿@model OrderVM
+
+@{
+    var departureDate = Regex.Replace(Model.Ride.DepartureTime.ToString("dd MMM, ddd"), @"\.(.)|\b(.)", m => m.Groups[1].Success ? m.Groups[1].Value : m.Groups[2].Value.ToUpper());
+    var arrivalDate = Regex.Replace(Model.Ride.ArrivalTime.ToString("dd MMM, ddd"), @"\.(.)|\b(.)", m => m.Groups[1].Success ? m.Groups[1].Value : m.Groups[2].Value.ToUpper());
+
+    string ticketsAvailable = Model.Ride.TicketsAvailable >= 5 ? "5" : Model.Ride.TicketsAvailable.ToString();
+}
+
+<main class="ticket_buy">
+    <div class="ticket_buy__wrap">
+        <div class="ticket_buy__form">
+            <form asp-action="Order" method="post" class="ticket_buy__form-form">
+                <div class="ticket_buy__form-passengers">
+                    <div class="ticket_buy__form-passengers-title">
+                        <div class="ticket_buy__form-passengers-title-number">1</div>
+                        <div class="ticket_buy__form-passengers-title-title">Ім'я та прізвище</div>
+                    </div>
+                    <div class="ticket_buy__form-passengers-name">
+                        <div class="ticket_buy__form-passengers-name-inputs">
+                            <div class="ticket_buy__form-passengers-name-inputs-name-wrap">
+                                <label for="firstname">Ім'я:</label>
+                                <input type="text" placeholder="Введіть ім'я" name="FirstName" asp-for="Order.FirstName" class="ticket_buy__form-passengers-name-inputs-name" id="firstname">
+                                <span asp-validation-for="Order.FirstName"></span>
+                            </div>
+                            <div class="ticket_buy__form-passengers-name-inputs-lastname-wrap">
+                                <label for="lastname">Прізвище:</label>
+                                <input type="text" placeholder="Введіть прізвище" name="LastName" asp-for="Order.LastName" class="ticket_buy__form-passengers-name-inputs-surname" id="lastname">
+                                <span asp-validation-for="Order.LastName"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ticket_buy__form-contacts">
+                    <div class="ticket_buy__form-contacts-title">
+                        <div class="ticket_buy__form-contacts-title-number">2</div>
+                        <div class="ticket_buy__form-contacts-title-title">Контакти</div>
+                    </div>
+                    <div class="ticket_buy__form-contacts-inputs">
+                        <div>
+                            <label for="email">Email:</label>
+                            <input type="email" placeholder="Введіть email" name="Email" asp-for="Order.Email" class="ticket_buy__form-contacts-inputs-email" id="email">
+                            <span asp-validation-for="Order.Email"></span>
+                        </div>
+                        <div>
+                            <label for="phone">Телефон:</label>
+                            <input type="tel" placeholder="Введіть телефон" name="Phone" class="ticket_buy__form-contacts-inputs-phone" id="phone" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="ticket_buy__form-tickets_count">
+                    <div class="ticket_buy__form-tickets_count-title">
+                        <div class="ticket_buy__form-tickets_count-title-number">3</div>
+                        <div class="ticket_buy__form-tickets_count-title-title">К-сть квитків</div>
+                    </div>
+                    <div class="ticket_buy__form-tickets_count-content">
+                        <div class="ticket_buy__form-tickets_count-content-text">Необхідна к-сть квитків <span>(доступно: @ticketsAvailable шт.): </span></div>
+                        <div class="ticket_buy__form-tickets_count-content-counter">
+                            <div class="ticket_buy__form-tickets_count-content-counter-subtract"><i class="fa-solid fa-minus"></i></div>
+                            <div class="ticket_buy__form-tickets_count-content-counter-value">
+                                <input type="number" name="TicketsOrdered" asp-for="Order.TicketsOrdered" min="1" max="@ticketsAvailable" readonly value="1">
+                                <span asp-validation-for="Order.TicketsOrdered"></span>
+                            </div>
+                            <div class="ticket_buy__form-tickets_count-content-counter-add"><i class="fa-solid fa-plus"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ticket_buy__form-additional_baggage">
+                    <div class="ticket_buy__form-additional_baggage-title">
+                        <div class="ticket_buy__form-additional_baggage-title-number">4</div>
+                        <div class="ticket_buy__form-additional_baggage-title-title">Додаткові послуги</div>
+                    </div>
+                    <div class="ticket_buy__form-additional_baggage-included">
+                        <div class="ticket_buy__form-additional_baggage-included-icon"><i class="fa-solid fa-suitcase-rolling"></i></div>
+                        <div class="ticket_buy__form-additional_baggage-included-text">
+                            <div class="ticket_buy__form-additional_baggage-included-text-title">Включено на особу</div>
+                            <div class="ticket_buy__form-additional_baggage-included-text-first_item">1 ручна поклажа | 7 кг 42х30х18 см</div>
+                            <div class="ticket_buy__form-additional_baggage-included-text-second_item">1 одиниця туристичного багажу | 20 кг 80х50х30 см</div>
+                        </div>
+                    </div>
+                    <div class="ticket_buy__form-additional_baggage-add">
+                        <div class="ticket_buy__form-additional_baggage-add-header">
+                            <div class="ticket_buy__form-additional_baggage-add-header-icon"><i class="fa-solid fa-circle-plus"></i></div>
+                            <div class="ticket_buy__form-additional_baggage-add-header-text">
+                                <div class="ticket_buy__form-additional_baggage-add-header-text-title">Додати багаж</div>
+                                <div class="ticket_buy__form-additional_baggage-add-header-text-added">від 65,00 грн</div>
+                            </div>
+                            <div class="ticket_buy__form-additional_baggage-add-header-arrow_icon"><i class="fa-solid fa-chevron-down"></i></div>
+                        </div>
+                        <div class="ticket_buy__form-additional_baggage-add-options">
+                            <div class="ticket_buy__form-additional_baggage-add-options-option">
+                                <div class="ticket_buy__form-additional_baggage-add-options-option-text">
+                                    <div class="ticket_buy__form-additional_baggage-add-options-option-text-icon"><i class="fa-solid fa-suitcase"></i></div>
+                                    <div class="ticket_buy__form-additional_baggage-add-options-option-text-wrap">
+                                        <div class="ticket_buy__form-additional_baggage-add-options-option-text-wrap-text">Додатковий багаж</div>
+                                        <div class="ticket_buy__form-additional_baggage-add-options-option-text-wrap-sizes">20 кг 80х50х30 см</div>
+                                    </div>
+                                </div>
+                                <div class="ticket_buy__form-additional_baggage-add-options-option-add">
+                                    <div class="ticket_buy__form-additional_baggage-add-options-option-add-price">+ 65.00 грн</div>
+                                    <div class="ticket_buy__form-additional_baggage-add-options-option-add-subtract_add">
+                                        <div class="ticket_buy__form-additional_baggage-add-options-option-add-subtract_add-subtract"><i class="fa-solid fa-minus"></i></div>
+                                        <div class="ticket_buy__form-additional_baggage-add-options-option-add-subtract_add-value">
+                                            <input type="number" name="AdditionalBaggage" asp-for="Order.AdditionalBaggage" min="0" readonly value="0">
+                                            <span asp-validation-for="Order.AdditionalBaggage"></span>
+                                        </div>
+                                        <div class="ticket_buy__form-additional_baggage-add-options-option-add-subtract_add-add"><i class="fa-solid fa-plus"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" class="ticket_buy__form-form-submit" style="display: none"/>
+            </form>
+        </div>
+        <div class="ticket_buy__ticket">
+            <div class="tickets-content__tickets-ticket-content">
+                <div class="tickets-content__tickets-ticket-places">
+                    <div class="tickets-content__tickets-ticket-places-from">
+                        <div class="tickets-content__tickets-ticket-places-from-city">@Model.Ride.DeparturePlace.City</div>
+                        <div class="tickets-content__tickets-ticket-places-from-station">@Model.Ride.DeparturePlace.Station</div>
+                        <div class="tickets-content__tickets-ticket-places-from-street">@Model.Ride.DeparturePlace.Street</div>
+                    </div>
+                    <div class="tickets-content__tickets-ticket-places-to">
+                        <div class="tickets-content__tickets-ticket-places-to-city">@Model.Ride.ArrivalPlace.City</div>
+                        <div class="tickets-content__tickets-ticket-places-to-station">@Model.Ride.ArrivalPlace.Station</div>
+                        <div class="tickets-content__tickets-ticket-places-to-street">@Model.Ride.ArrivalPlace.Street</div>
+                    </div>
+                </div>
+                <div class="tickets-content__tickets-ticket-when">
+                    <div class="tickets-content__tickets-ticket-when-from_time">
+                        <div class="tickets-content__tickets-ticket-when-from_time-time">@Model.Ride.DepartureTime.ToString("HH:mm")</div>
+                        <div class="tickets-content__tickets-ticket-when-from_time-day">@departureDate</div>
+                    </div>
+                    <div class="tickets-content__tickets-ticket-when-time_in_trip">
+                        <div class="tickets-content__tickets-ticket-when-time_in_trip-icon"><i class="fa-regular fa-clock"></i></div>
+                        <div class="tickets-content__tickets-ticket-when-time_in_trip-time">@((Model.Ride.ArrivalTime - Model.Ride.DepartureTime).ToString("hh\\:mm"))</div>
+                    </div>
+                    <div class="tickets-content__tickets-ticket-when-to_time">
+                        <div class="tickets-content__tickets-ticket-when-to_time-time">@Model.Ride.ArrivalTime.ToString("HH:mm")</div>
+                        <div class="tickets-content__tickets-ticket-when-to_time-day">@arrivalDate</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ticket_buy__ticket-price">
+                <div class="ticket_buy__ticket-price-text"><span>Усього</span> (вкл. ПДВ)</div>
+                <div class="ticket_buy__ticket-price-price"><span>@Model.Ride.Price</span> грн</div>
+            </div>
+            <div class="ticket_buy__ticket-buy">
+                <button type="submit" class="ticket_buy__ticket-buy-button">Оплатити</button>
+            </div>
+        </div>
+    </div>
+</main>

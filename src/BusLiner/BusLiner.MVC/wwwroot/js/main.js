@@ -65,9 +65,10 @@ window.addEventListener('load', e => {
 
     //Hero
     function changeImage() {
+        let form = document.querySelector('.header__form')
         let image = document.querySelector('.header__image')
 
-        if (image != null) {
+        if (form != null) {
             window.onresize = e => {
                 if(window.innerWidth < 680) {
                     image.innerHTML = '<img src="images/hero-image-small.jpg" alt="">'
@@ -86,7 +87,9 @@ window.addEventListener('load', e => {
         else {
             let header = document.querySelector('.header__wrap')
 
-            if(header != null) {
+            if (header != null) {
+                document.querySelector('.header__image').remove()
+                header.style.position = 'relative'
                 document.querySelector('.menu__icon').style.top = '0'
                 header.style.backgroundColor = '#0097B2'
                 document.querySelector('.header__logo img').style.width = '90px'
@@ -424,24 +427,44 @@ window.addEventListener('load', e => {
      
     // Buy page
 
+    function submitOrderForm() {
+        let btn = document.querySelector('.ticket_buy__ticket-buy-button')
+
+        if (btn != null) {
+            btn.addEventListener('click', e => {
+                document.querySelector('.ticket_buy__form-form-submit').click()
+            })
+
+        }
+    }
+
+    submitOrderForm()
+
     function subtractValue() {
         let subtractBtnTickets = document.querySelector('.ticket_buy__form-tickets_count-content-counter-subtract')
         let subtractBtnBaggage = document.querySelector('.ticket_buy__form-additional_baggage-add-options-option-add-subtract_add-subtract')
     
         if (subtractBtnTickets != null && subtractBtnBaggage != null) {
+            let ticketPriceField = document.querySelector('.ticket_buy__ticket-price-price span')
+
+            const ticketPrice = ~~ticketPriceField.innerHTML
+            const additionalBaggagePrice = 65
+
             let inputTickets = document.querySelector('.ticket_buy__form-tickets_count-content-counter-value input')
             let inputBaggage = document.querySelector('.ticket_buy__form-additional_baggage-add-options-option-add-subtract_add-value input')
 
             subtractBtnBaggage.addEventListener('click', e => {
                 inputBaggage.stepDown()
-                if(~~inputBaggage.getAttribute('value') > 0) {
+                if (~~inputBaggage.getAttribute('value') > 0) {
+                    ticketPriceField.innerHTML = ~~ticketPriceField.innerHTML - additionalBaggagePrice
                     inputBaggage.setAttribute('value', inputBaggage.getAttribute('value') - 1)
                 }
             })
 
             subtractBtnTickets.addEventListener('click', e => {
                 inputTickets.stepDown()
-                if(~~inputTickets.getAttribute('value') > 1) {
+                if (~~inputTickets.getAttribute('value') > 1) {
+                    ticketPriceField.innerHTML = ~~ticketPriceField.innerHTML - ticketPrice
                     inputTickets.setAttribute('value', inputTickets.getAttribute('value') - 1)
                 }
             })
@@ -455,17 +478,29 @@ window.addEventListener('load', e => {
         let addBtnBaggage = document.querySelector('.ticket_buy__form-additional_baggage-add-options-option-add-subtract_add-add')
     
         if (addBtnTickets != null && addBtnBaggage != null) {
+            let ticketPriceField = document.querySelector('.ticket_buy__ticket-price-price span')
+
+            const ticketPrice = ~~ticketPriceField.innerHTML
+            const additionalBaggagePrice = 65
+
             let inputTickets = document.querySelector('.ticket_buy__form-tickets_count-content-counter-value input')
             let inputBaggage = document.querySelector('.ticket_buy__form-additional_baggage-add-options-option-add-subtract_add-value input')
+            let maxValue = ~~inputTickets.getAttribute('max')
 
             addBtnBaggage.addEventListener('click', e => {
-                inputBaggage.stepUp()
-                inputBaggage.setAttribute('value', ~~inputBaggage.getAttribute('value') + 1)
+                if (~~inputBaggage.value < ~~inputTickets.value * 2) {
+                    inputBaggage.stepUp()
+                    ticketPriceField.innerHTML = ~~ticketPriceField.innerHTML + additionalBaggagePrice
+                    inputBaggage.setAttribute('value', ~~inputBaggage.getAttribute('value') + 1)
+                }
             })
 
             addBtnTickets.addEventListener('click', e => {
-                inputTickets.stepUp()
-                inputTickets.setAttribute('value', ~~inputTickets.getAttribute('value') + 1)
+                if (~~inputTickets.getAttribute('value') < maxValue) {
+                    inputTickets.stepUp()
+                    ticketPriceField.innerHTML = ~~ticketPriceField.innerHTML + ticketPrice
+                    inputTickets.setAttribute('value', ~~inputTickets.getAttribute('value') + 1)
+                }
             })
         }
     }
