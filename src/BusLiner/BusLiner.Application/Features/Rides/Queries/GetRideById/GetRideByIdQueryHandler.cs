@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
 using BusLiner.Application.Exceptions;
 using BusLiner.Domain.Interfaces.Repositories;
+using BusLiner.Domain.Entities;
 using MediatR;
 
 namespace BusLiner.Application.Features.Rides.Queries.GetRideById
 {
-    public class GetRideByIdQueryHandler : IRequestHandler<GetRideByIdQuery, GetRideByIdDto>
+    public class GetRideByIdQueryHandler : IRequestHandler<GetRideByIdQuery, Ride>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
@@ -16,14 +17,14 @@ namespace BusLiner.Application.Features.Rides.Queries.GetRideById
             _mapper = mapper;
         }
 
-        public async Task<GetRideByIdDto> Handle(GetRideByIdQuery request, CancellationToken cancellationToken)
+        public async Task<Ride> Handle(GetRideByIdQuery request, CancellationToken cancellationToken)
         {
             var ride = await _unitOfWork.RideRepository.GetByIdAsync(request.Id);
 
             if (ride == null) 
                 throw new NotFoundException(nameof(ride), request.Id);
 
-            return _mapper.Map<GetRideByIdDto>(ride);
+            return ride;
         }
     }
 }

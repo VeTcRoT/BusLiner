@@ -3,7 +3,7 @@ using MediatR;
 
 namespace BusLiner.Application.Features.Rides.Queries.GetRideById
 {
-    public class GetRideByIdQuery : IRequest<GetRideByIdDto>
+    public class GetRideByIdQuery : IRequest<Ride>
     {
         public int Id { get; set; }
     }

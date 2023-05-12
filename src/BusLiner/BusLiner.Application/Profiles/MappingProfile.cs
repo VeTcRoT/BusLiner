@@ -10,8 +10,6 @@ namespace BusLiner.Application.Profiles
     {
         public MappingProfile()
         {
-            CreateMap<Ride, GetRideByIdDto>();
-
             CreateMap<DeparturePlace, ListAllDeparturePlacesDto>();
             CreateMap<ArrivalPlace, ListAllArrivalPlacesDto>();
         }
