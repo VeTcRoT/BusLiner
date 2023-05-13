@@ -12,6 +12,11 @@
     justify-content: space-between;
 }
 
+.tickets-content__tickets-ticket-buy-form-button-content-text a{
+    text-decoration: none;
+    color: #fff;
+}
+
 .tickets-content__title-sortby-button-button {
     padding: 10px 30px;
     font-size: 20px;
