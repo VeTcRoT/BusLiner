@@ -12,7 +12,7 @@ namespace BusLiner.Application
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddMediatR(x => x.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
-            services.AddValidatorsFromAssemblyContaining<CreateOrderQueryValidator>(ServiceLifetime.Transient);
+            services.AddValidatorsFromAssemblyContaining<IAssemblyMarker>(ServiceLifetime.Transient);
 
             return services;
         }

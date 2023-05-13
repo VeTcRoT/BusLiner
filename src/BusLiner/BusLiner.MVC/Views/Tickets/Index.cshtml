@@ -2,26 +2,25 @@
 
 <div class="header__form">
     <form asp-action="Index" method="post" autocomplete="off">
-        <div class="header__form-from-wrap">
-            <input type="text" name="From" placeholder="Звідки" class="header__form-from" required value="@Model.From">
-            <div class="header__form-from-cities">
-                @foreach (ListAllDeparturePlacesDto departurePlace in Model.DeparturePlaces)
-                {
-                    <div class="header__form-from-cities-city">@departurePlace.City</div>
-                }
-            </div>
+        <input type="text" name="From" asp-for="From" placeholder="Звідки" class="header__form-from" required value="@Model.From">
+        <span asp-validation-for="From" class="header__form-from-validation"></span>
+        <div class="header__form-from-cities">
+            @foreach (ListAllDeparturePlacesDto departurePlace in Model.DeparturePlaces)
+            {
+                <div class="header__form-from-cities-city">@departurePlace.City</div>
+            }
         </div>
-        
-        <div class="header__form-to-wrap">
-            <input type="text" name="To" placeholder="Куди" class="header__form-to" required value="@Model.To">
-            <div class ="header__form-to-cities">
-                @foreach (ListAllArrivalPlacesDto arrivalPlace in Model.ArrivalPlaces)
-                {
-                    <div class="header__form-to-cities-city">@arrivalPlace.City</div>
-                }
-            </div>
+
+        <input type="text" name="To" asp-for="To" placeholder="Куди" class="header__form-to" required value="@Model.To">
+        <span asp-validation-for="To" class="header__form-to-validation"></span>
+        <div class="header__form-to-cities">
+            @foreach (ListAllArrivalPlacesDto arrivalPlace in Model.ArrivalPlaces)
+            {
+                <div class="header__form-to-cities-city">@arrivalPlace.City</div>
+            }
         </div>
-        <input type="date" name="DepartureDate" placeholder="Дата" class="header__form-date" onkeydown="return false" value="@Model.DepartureDate.ToString("yyy-MM-dd")">
+        <input type="date" name="DepartureDate" asp-for="DepartureDate" placeholder="Дата" class="header__form-date" onkeydown="return false" value="@Model.DepartureDate.ToString("yyy-MM-dd")" required>
+        <span asp-validation-for="DepartureDate" class="header__form-date-validation"></span>
         <button type="submit" class="header__form-button">Пошук<i class="fa-solid fa-magnifying-glass"></i></button>
     </form>
 </div>

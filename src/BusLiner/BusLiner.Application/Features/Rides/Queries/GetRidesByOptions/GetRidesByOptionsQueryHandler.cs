@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using BusLiner.Application.Exceptions;
-using BusLiner.Application.Features.Rides.Queries.GetRideById;
 using BusLiner.Domain.Entities;
 using BusLiner.Domain.Interfaces.Repositories;
 using MediatR;
@@ -20,12 +19,6 @@ namespace BusLiner.Application.Features.Rides.Queries.GetRidesByOptions
 
         public async Task<IEnumerable<Ride>> Handle(GetRidesByOptionsQuery request, CancellationToken cancellationToken)
         {
-            var validator = new GetRidesByOptionsQueryValidator();
-            var validationResult = await validator.ValidateAsync(request);
-
-            if (validationResult.Errors.Count > 0)
-                throw new ValidationException(validationResult);
-
             var rides = await _unitOfWork.RideRepository.GetRidesByQueryAsync(request.From, request.To, request.DepartureDate);
 
             if (rides == null)
