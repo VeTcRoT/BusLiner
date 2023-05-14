@@ -1,0 +1,84 @@
+﻿.manage-account {
+    max-width: 1100px;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+.manage-account__content {
+    display: flex;
+    gap: 30px;
+}
+
+.manage-account__title {
+    font-size: 30px;
+}
+
+.manage-account__subtitle {
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+.manage-account__content-option {
+    flex: 70%;
+}
+
+.manage-account__content-nav-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.manage-account__content-nav-wrap-item-link {
+    text-decoration: none;
+    color: #fff;
+    background-color: rgb(0, 151, 178);
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    padding: 15px 50px;
+    border-radius: 10px;
+    text-align: center;
+    transition: background-color 0.2s ease-out;
+}
+
+.manage-account__content-nav-wrap-item-link:hover {
+    background-color: #00b5d1;
+    cursor: pointer;
+}
+
+/*Email Change*/
+
+.manage-account__content-option-email_change-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.manage-account__content-option-email_change-wrap-form-input label {
+    display: block;
+    margin: 10px 0;
+    font-size: 20px;
+}
+
+.manage-account__content-option-email_change-wrap-form-input input {
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid grey;
+}
+
+.manage-account__content-option-email_change-wrap-form-submit {
+    border: 0;
+    background: orange;
+    color: #fff;
+    font-size: 19px;
+    margin-top: 20px;
+    padding: 10px 30px;
+    border-radius: 10px;
+    transition: background 0.2s ease-out;
+    font-weight: bold;
+}
+
+.manage-account__content-option-email_change-wrap-form-submit:hover {
+    background: #f98d41;
+    cursor: pointer;
+}
