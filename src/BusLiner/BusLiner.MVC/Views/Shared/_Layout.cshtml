@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -38,7 +43,24 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li><a href="#" class="menu__link"><i class="fa fa-sign-in" aria-hidden="true"></i> Увійти</a></li>
+                            @if (SignInManager.IsSignedIn(User))
+                            {
+                                <li>
+                                    <a id="manage" class="menu__link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+                                </li>
+                                <li class="logout-li">
+                                    <form id="logoutForm" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                        <input type="submit" id="logout" value="Вийти" />
+                                    </form>
+                                </li>
+                            }
+                            else
+                            {
+                                <li>
+                                    <a id="login" class="menu__link" asp-area="Identity" asp-page="/Account/Login"><i class="fa fa-sign-in" aria-hidden="true"></i> Увійти</a>
+                                </li>
+                            }
+                            @*<li><a href="#" class="menu__link"><i class="fa fa-sign-in" aria-hidden="true"></i> Увійти</a></li>*@
                         </ul>
                     </nav>
                 </div>
@@ -48,7 +70,7 @@
             <img src="images/hero-image.jpg" alt="">
         </div>
     </header>
-        @RenderBody()
+    @RenderBody()
     <footer class="footer">
         <div class="footer__wrap">
             <div class="footer__about-us">
@@ -93,4 +115,5 @@
     <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
     <script src="~/js/main.js"></script>
 </body>
+@RenderSection("scripts", false)
 </html>
