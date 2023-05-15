@@ -42,5 +42,39 @@
 .login__wrap-issues{
     display: flex;
     justify-content: space-between;
-    margin: 10px 0;
+    margin: 20px 0;
+}
+
+
+.login__wrap-additional form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login__wrap-additional-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 5px 0;
+    border-radius: 10px;
+    border: 1px solid grey;
+}
+
+.login__wrap-additional-btn:hover {
+    background: #e1dfdf;
+    cursor: pointer;
+}
+
+.login__wrap-additional-btn-logo {
+    height: 32px;
+}
+
+    .login__wrap-additional-btn-logo img {
+        width: 32px;
+    }
+
+.login__wrap-additional-btn-text {
+    font-size: 16px;
 }

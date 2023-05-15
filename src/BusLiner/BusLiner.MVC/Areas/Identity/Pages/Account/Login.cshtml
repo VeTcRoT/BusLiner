@@ -1,15 +1,11 @@
 ﻿@page
 @model LoginModel
 
-@{
-    ViewData["Title"] = "Log in";
-}
-
 <div class="login">
     <div class="login__wrap">
         <div class="login__wrap-form">
             <form id="account" method="post">
-                <div class="login__wrap-form-title">@ViewData["Title"]</div>
+                <div class="login__wrap-form-title">Вхід</div>
                 <hr />
                 <div asp-validation-summary="ModelOnly"></div>
                 <div class="login__wrap-form-input" style="margin-bottom: 20px;">
@@ -17,27 +13,24 @@
                     <span asp-validation-for="Input.Email"></span>
                 </div>
                 <div class="login__wrap-form-input">
-                    <input asp-for="Input.Password" placeholder="Password" autocomplete="current-password" aria-required="true" />
+                    <input asp-for="Input.Password" placeholder="Пароль" autocomplete="current-password" aria-required="true" />
                     <span asp-validation-for="Input.Password"></span>
                 </div>
                 <div class="login__wrap-form-input_checkbox">
                     <label asp-for="Input.RememberMe">
                         <input asp-for="Input.RememberMe" />
-                        @Html.DisplayNameFor(m => m.Input.RememberMe)
+                        Запам'ятати?
                     </label>
                 </div>
                 <div>
-                    <button id="login-submit" type="submit" class="login__wrap-form-submit">Log in</button>
+                    <button id="login-submit" type="submit" class="login__wrap-form-submit">Увійти</button>
                 </div>
                 <div class="login__wrap-issues">
                     <p>
-                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                        <a id="forgot-password" asp-page="./ForgotPassword">Забули пароль?</a>
                     </p>
                     <p>
-                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
-                    </p>
-                    <p>
-                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Зареєструватись</a>
                     </p>
                 </div>
             </form>
@@ -57,14 +50,21 @@
                     else
                     {
                         <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                            <div>
-                                <p>
-                                    @foreach (var provider in Model.ExternalLogins!)
+                            @foreach (var provider in Model.ExternalLogins!)
+                            {
+                                <button type="submit" class="login__wrap-additional-btn" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">
+                                    @if (provider.DisplayName == "Google")
                                     {
-                                        <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                        <div class="login__wrap-additional-btn-logo"><img src="~/images/google-logo.png" /></div>
+                                        <div class="login__wrap-additional-btn-text">Увійти з Google</div>
                                     }
-                                </p>
-                            </div>
+                                    else if (provider.DisplayName == "Facebook")
+                                    {
+                                        <div class="login__wrap-additional-btn-logo"><img src="~/images/facebook-logo.png" /></div>
+                                        <div class="login__wrap-additional-btn-text">Увійти з Facebook</div>
+                                    }
+                                </button>
+                            }
                         </form>
                     }
                 }
