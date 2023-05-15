@@ -5,6 +5,7 @@
 @import 'tickets.css';
 @import 'buy.css';
 @import 'account.css';
+@import 'login.css';
 
 body {
     font-family: 'Roboto', sans-serif;
