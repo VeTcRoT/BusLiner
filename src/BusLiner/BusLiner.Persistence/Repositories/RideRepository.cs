@@ -13,6 +13,12 @@ namespace BusLiner.Persistence.Repositories
             _dbContext = dbContext;
         }
 
+        public async Task<IEnumerable<Ride>?> GetAllUserRidesAsync(string email)
+        {
+            var userRides = await _dbContext.Orders.Where(o => o.Email == email).ToListAsync();
+            return (IEnumerable<Ride>)userRides;
+        }
+
         public async Task<Ride> GetRideByIdAsync(int id)
         {
             return await _dbContext.Rides.Include(r => r.DeparturePlace)
