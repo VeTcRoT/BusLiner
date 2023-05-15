@@ -5,14 +5,6 @@
     margin-top: 30px;
 }
 
-.manage-account__content-option-email_change {
-    margin-bottom: 125px;
-}
-
-.manage-account__content-option-password_change {
-    margin-bottom: 50px;
-}
-
 .manage-account__content {
     display: flex;
     gap: 100px;
@@ -65,11 +57,14 @@
 
 .manage-account__content-option-email_change-wrap-form-input label, .manage-account__content-option-password_change-wrap-form-input label {
     display: block;
-    /*margin: 10px 0;*/
-    /*font-size: 20px;*/
     margin-bottom: 5px;
     font-size: 16px;
     color: grey;
+}
+
+.manage-account__content-option-password_change-subtitle {
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .manage-account__content-option-email_change-wrap-form-input, .manage-account__content-option-password_change-wrap-form-input {
