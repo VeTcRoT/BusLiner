@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusLiner.Persistence", "Bus
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusLiner.MVC", "BusLiner.MVC\BusLiner.MVC.csproj", "{32E3433F-38FE-47BC-86B5-E8596A5F2B26}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusLiner.Infrastructure", "BusLiner.Infrastructure\BusLiner.Infrastructure.csproj", "{160271F6-EEF4-4264-9A82-63812749EFC0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{32E3433F-38FE-47BC-86B5-E8596A5F2B26}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32E3433F-38FE-47BC-86B5-E8596A5F2B26}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32E3433F-38FE-47BC-86B5-E8596A5F2B26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{160271F6-EEF4-4264-9A82-63812749EFC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{160271F6-EEF4-4264-9A82-63812749EFC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{160271F6-EEF4-4264-9A82-63812749EFC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{160271F6-EEF4-4264-9A82-63812749EFC0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +54,7 @@ Global
 		{BB341518-229A-4ED5-AAB6-1E446A18CECC} = {F657A4B8-634A-4F9E-AF82-31C8C3393FBC}
 		{D50C8E77-A0C3-4104-B170-C077EAA9CD7E} = {14FFD453-4D0A-4670-A9D2-A58875207E89}
 		{32E3433F-38FE-47BC-86B5-E8596A5F2B26} = {FACFDB83-0D52-4C61-93EE-5AC0809F7176}
+		{160271F6-EEF4-4264-9A82-63812749EFC0} = {14FFD453-4D0A-4670-A9D2-A58875207E89}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C9B1A1E1-41A6-4B21-B836-1C7F59AD52C8}

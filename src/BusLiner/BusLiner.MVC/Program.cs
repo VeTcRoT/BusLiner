@@ -3,6 +3,7 @@ using BusLiner.Persistence;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using Microsoft.AspNetCore.Identity;
+using BusLiner.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,6 +34,7 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddApplicationServices();
 builder.Services.AddPersistenceServices();
+builder.Services.AddInfrastructureServices();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 

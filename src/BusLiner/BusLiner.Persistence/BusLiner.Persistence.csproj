@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BusLiner.Application\BusLiner.Application.csproj" />
     <ProjectReference Include="..\BusLiner.Domain\BusLiner.Domain.csproj" />
   </ItemGroup>
 

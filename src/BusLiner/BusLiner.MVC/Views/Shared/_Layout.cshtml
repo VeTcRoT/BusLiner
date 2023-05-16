@@ -46,7 +46,7 @@
                             @if (SignInManager.IsSignedIn(User))
                             {
                                 <li>
-                                    <a id="manage" class="menu__link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+                                    <a id="manage" class="menu__link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Кабінет</a>
                                 </li>
                                 <li class="logout-li">
                                     <form id="logoutForm" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">

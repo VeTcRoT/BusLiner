@@ -28,6 +28,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BusLiner.Application\BusLiner.Application.csproj" />
+    <ProjectReference Include="..\BusLiner.Infrastructure\BusLiner.Infrastructure.csproj" />
     <ProjectReference Include="..\BusLiner.Persistence\BusLiner.Persistence.csproj" />
   </ItemGroup>
 
