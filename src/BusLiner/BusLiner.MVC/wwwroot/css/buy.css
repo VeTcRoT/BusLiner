@@ -5,6 +5,9 @@
     height: 100%;
     margin: 20px auto;
     max-width: 1100px;
+    padding: 0 10px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .ticket_buy .field-validation-error {
@@ -12,10 +15,14 @@
     top: 5px;
 }
 
+.tickets-content__tickets-ticket-places-to-station {
+    text-align: right;
+}
+
 .ticket_buy__wrap {
     display: flex;
-    justify-content: space-between;
     width: 100%;
+    gap: 20px;
 }
 
 .ticket_buy .tickets-content__tickets-ticket-content {
@@ -38,7 +45,7 @@
 }
 
 .ticket_buy__form {
-    max-width: 650px;
+    flex: 1;
     width: 100%;
 }
 

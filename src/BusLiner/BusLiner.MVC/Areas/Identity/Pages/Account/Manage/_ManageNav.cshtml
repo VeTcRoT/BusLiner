@@ -5,6 +5,8 @@
 <ul class="manage-account__content-nav-wrap">
     <li class="manage-account__content-nav-wrap-item"><a class="manage-account__content-nav-wrap-item-link @ManageNavPages.EmailNavClass(ViewContext)" id="email" asp-page="./Index">Email</a></li>
     <li class="manage-account__content-nav-wrap-item"><a class="manage-account__content-nav-wrap-item-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">Пароль</a></li>
+    <li class="manage-account__content-nav-wrap-item"><a class="manage-account__content-nav-wrap-item-link" id="rides" asp-page="./UserRides">Поїздки</a></li>
+
     @if (hasExternalLogins)
     {
         <li id="external-logins" class="nav-item"><a id="external-login" class="nav-link @ManageNavPages.ExternalLoginsNavClass(ViewContext)" asp-page="./ExternalLogins">External logins</a></li>

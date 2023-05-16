@@ -1,21 +1,36 @@
-﻿using BusLiner.Domain.Entities;
+﻿using AutoMapper;
+using BusLiner.Domain.Entities;
 using BusLiner.Domain.Interfaces.Repositories;
 using MediatR;
 
 namespace BusLiner.Application.Features.Orders.Queries.GetUserRidesByEmail
 {
-    public class GetUserRidesByEmailQueryHandler : IRequestHandler<GetUserRidesByEmailQuery, IEnumerable<Ride>?>
+    public class GetUserRidesByEmailQueryHandler : IRequestHandler<GetUserRidesByEmailQuery, IEnumerable<GetUserRidesByEmailDto>?>
     {
-        private readonly IOrderRepository _orderRepository;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
-        public GetUserRidesByEmailQueryHandler(IOrderRepository orderRepository)
+        public GetUserRidesByEmailQueryHandler(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _orderRepository = orderRepository;
+            _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
-        public async Task<IEnumerable<Ride>?> Handle(GetUserRidesByEmailQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<GetUserRidesByEmailDto>?> Handle(GetUserRidesByEmailQuery request, CancellationToken cancellationToken)
         {
-            var userRides = await _orderRepository.GetAllUserRidesAsync(request.Email);
+            var userOrders = await _unitOfWork.OrderRepository.GetAllUserOrdersAsync(request.Email);
+
+            var userRides = new List<GetUserRidesByEmailDto>();
+
+            if (userOrders != null)
+            {
+                foreach (var order in userOrders)
+                {
+                    userRides.Add(_mapper.Map<GetUserRidesByEmailDto>(order.Ride));
+                    userRides.Last().Total = order.Total;
+                    userRides.Last().TicketsOrdered = order.TicketsOrdered;
+                }
+            }
 
             return userRides;
         }

@@ -3,6 +3,8 @@
     padding: 10px;
     margin: 0 auto;
     margin-top: 30px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .manage-account__content {
@@ -21,7 +23,11 @@
 }
 
 .manage-account__content-option {
-    flex: 70%;
+    width: 100%;
+}
+
+.manage-account__content-nav {
+    min-width: 25%;
 }
 
 .manage-account__content-nav-wrap {
@@ -119,6 +125,25 @@
 .manage-account__content-option-email_change-wrap-form-submit:hover, .manage-account__content-option-password_change-wrap-form-submit:hover {
     background: #f98d41;
     cursor: pointer;
+}
+
+.tickets-content__tickets-ticket-buy-account {
+    flex-direction: column;
+    margin-left: 15px;
+    align-items: flex-end;
+    gap: 5px;
+}
+
+.tickets-content__tickets-ticket-buy-price-account {
+    padding: 0;
+}
+
+.tickets-content__tickets-ticket-buy-form-tickets_left-account {
+    font-size: 16px;
+}
+
+.manage-account__content-option-rides_title {
+    font-size: 25px;
 }
 
 @media (max-width: 985px) {

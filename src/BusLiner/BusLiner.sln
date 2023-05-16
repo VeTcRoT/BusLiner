@@ -9,13 +9,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{F657A4B8-6
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{14FFD453-4D0A-4670-A9D2-A58875207E89}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusLiner.Domain", "BusLiner.Domain\BusLiner.Domain.csproj", "{7AD43851-0313-492F-9997-C5CBC2A4A616}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusLiner.Domain", "BusLiner.Domain\BusLiner.Domain.csproj", "{7AD43851-0313-492F-9997-C5CBC2A4A616}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusLiner.Application", "BusLiner.Application\BusLiner.Application.csproj", "{BB341518-229A-4ED5-AAB6-1E446A18CECC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusLiner.Application", "BusLiner.Application\BusLiner.Application.csproj", "{BB341518-229A-4ED5-AAB6-1E446A18CECC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusLiner.Persistence", "BusLiner.Persistence\BusLiner.Persistence.csproj", "{D50C8E77-A0C3-4104-B170-C077EAA9CD7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusLiner.Persistence", "BusLiner.Persistence\BusLiner.Persistence.csproj", "{D50C8E77-A0C3-4104-B170-C077EAA9CD7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusLiner.MVC", "BusLiner.MVC\BusLiner.MVC.csproj", "{32E3433F-38FE-47BC-86B5-E8596A5F2B26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusLiner.MVC", "BusLiner.MVC\BusLiner.MVC.csproj", "{32E3433F-38FE-47BC-86B5-E8596A5F2B26}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

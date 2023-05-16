@@ -11,10 +11,14 @@ namespace BusLiner.Persistence.Repositories
         { 
             _dbContext = dbContext;
         }
-        public async Task<IEnumerable<Ride>?> GetAllUserRidesAsync(string email)
+        public async Task<IEnumerable<Order>?> GetAllUserOrdersAsync(string email)
         {
-            var userRides = await _dbContext.Orders.Where(o => o.Email == email).ToListAsync();
-            return (IEnumerable<Ride>)userRides;
+            var userOrders = await _dbContext.Orders.Where(o => o.Email == email)
+                .Include(o => o.Ride)
+                .Include(o => o.Ride.DeparturePlace)
+                .Include(o => o.Ride.ArrivalPlace).ToListAsync();
+
+            return userOrders;
         }
     }
 }
