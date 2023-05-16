@@ -1,0 +1,78 @@
+﻿@page
+@model LoginModel
+
+<div class="login">
+    <div class="login__wrap">
+        <div class="login__wrap-form">
+            <form id="account" method="post">
+                <div class="login__wrap-form-title">Вхід</div>
+                <hr />
+                <div asp-validation-summary="ModelOnly"></div>
+                <div class="login__wrap-form-input" style="margin-bottom: 20px;">
+                    <input asp-for="Input.Email" placeholder="Email" autocomplete="username" aria-required="true" />
+                    <span asp-validation-for="Input.Email"></span>
+                </div>
+                <div class="login__wrap-form-input">
+                    <input asp-for="Input.Password" placeholder="Пароль" autocomplete="current-password" aria-required="true" />
+                    <span asp-validation-for="Input.Password"></span>
+                </div>
+                <div class="login__wrap-form-input_checkbox">
+                    <label asp-for="Input.RememberMe">
+                        <input asp-for="Input.RememberMe" />
+                        Запам'ятати?
+                    </label>
+                </div>
+                <div>
+                    <button id="login-submit" type="submit" class="login__wrap-form-submit">Увійти</button>
+                </div>
+                <div class="login__wrap-issues">
+                    <p>
+                        <a id="forgot-password" asp-page="./ForgotPassword">Забули пароль?</a>
+                    </p>
+                    <p>
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Зареєструватись</a>
+                    </p>
+                </div>
+            </form>
+            <div class="login__wrap-additional">
+                @{
+                    if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                    {
+                        <div>
+                            <p>
+                                There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">
+                                    article
+                                    about setting up this ASP.NET application to support logging in via external services
+                                </a>.
+                            </p>
+                        </div>
+                    }
+                    else
+                    {
+                        <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                            @foreach (var provider in Model.ExternalLogins!)
+                            {
+                                <button type="submit" class="login__wrap-additional-btn" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">
+                                    @if (provider.DisplayName == "Google")
+                                    {
+                                        <div class="login__wrap-additional-btn-logo"><img src="~/images/google-logo.png" /></div>
+                                        <div class="login__wrap-additional-btn-text">Увійти з Google</div>
+                                    }
+                                    else if (provider.DisplayName == "Facebook")
+                                    {
+                                        <div class="login__wrap-additional-btn-logo"><img src="~/images/facebook-logo.png" /></div>
+                                        <div class="login__wrap-additional-btn-text">Увійти з Facebook</div>
+                                    }
+                                </button>
+                            }
+                        </form>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

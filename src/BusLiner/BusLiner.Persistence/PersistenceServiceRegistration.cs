@@ -9,6 +9,7 @@ namespace BusLiner.Persistence
         public static IServiceCollection AddPersistenceServices(this IServiceCollection services)
         {
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+            services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IRideRepository, RideRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 

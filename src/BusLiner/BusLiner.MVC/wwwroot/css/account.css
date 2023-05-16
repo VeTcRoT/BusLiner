@@ -1,0 +1,168 @@
+﻿.manage-account {
+    max-width: 1100px;
+    padding: 10px;
+    margin: 0 auto;
+    margin-top: 30px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.manage-account__content {
+    display: flex;
+    gap: 100px;
+    margin: 30px 0;
+}
+
+.manage-account__title {
+    font-size: 30px;
+}
+
+.manage-account__subtitle {
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+.manage-account__content-option {
+    width: 100%;
+}
+
+.manage-account__content-nav {
+    min-width: 25%;
+}
+
+.manage-account__content-nav-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.manage-account__content-nav-wrap-item-link {
+    text-decoration: none;
+    color: #fff;
+    background-color: rgb(0, 151, 178);
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    padding: 15px 50px;
+    border-radius: 10px;
+    text-align: center;
+    transition: background-color 0.2s ease-out;
+}
+
+.manage-account__content-nav-wrap-item-link:hover {
+    background-color: #00b5d1;
+    cursor: pointer;
+}
+
+/*Email Change*/
+
+.manage-account__content-option-email_change-title, .manage-account__content-option-password_change-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.manage-account__content-option-email_change-wrap-form-input label, .manage-account__content-option-password_change-wrap-form-input label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: grey;
+}
+
+.manage-account__content-option-password_change-subtitle {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.manage-account__content-option-email_change-wrap-form-input, .manage-account__content-option-password_change-wrap-form-input {
+    padding: 7px 20px;
+    border-radius: 10px;
+    border: 1px solid grey;
+    max-width: 500px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.manage-account__content-option-email_change-wrap-form-input:last-child {
+    margin-top: 10px;
+}
+
+.manage-account__content-option-email_change-wrap-form-input input, .manage-account__content-option-password_change-wrap-form-input input {
+    border: 0;
+    font-size: 17px;
+    width: 100%;
+}
+
+.manage-account__content-option-email_change-wrap-form-input-disabled {
+    display: flex;
+    align-items: center;
+}
+
+.manage-account__content-option-email_change-wrap-form-input-disabled input {
+    background: 0;
+}
+
+.manage-account__content-option-email_change-wrap-form-input-disabled div {
+    position: relative;
+    top: -10px;
+    color: green;
+    font-size: 20px;
+}
+
+.manage-account__content-option-email_change-wrap-form-submit, .manage-account__content-option-password_change-wrap-form-submit {
+    border: 0;
+    background: orange;
+    color: #fff;
+    font-size: 19px;
+    margin-top: 10px;
+    padding: 13px 30px;
+    border-radius: 10px;
+    transition: background 0.2s ease-out;
+    font-weight: bold;
+    max-width: 500px;
+    width: 100%;
+}
+
+.manage-account__content-option-email_change-wrap-form-submit:hover, .manage-account__content-option-password_change-wrap-form-submit:hover {
+    background: #f98d41;
+    cursor: pointer;
+}
+
+.tickets-content__tickets-ticket-buy-account {
+    flex-direction: column;
+    margin-left: 15px;
+    align-items: flex-end;
+    gap: 5px;
+}
+
+.tickets-content__tickets-ticket-buy-price-account {
+    padding: 0;
+}
+
+.tickets-content__tickets-ticket-buy-form-tickets_left-account {
+    font-size: 16px;
+}
+
+.manage-account__content-option-rides_title {
+    font-size: 25px;
+}
+
+@media (max-width: 985px) {
+    .manage-account__content-option-email_change, .manage-account__content-option-password_change {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 700px) {
+    .manage-account__content {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .manage-account__content-option-email_change-wrap-form-input, .manage-account__content-option-password_change-wrap-form-input,
+    .manage-account__content-option-email_change-wrap-form-submit, .manage-account__content-option-password_change-wrap-form-submit {
+        max-width: 100%;
+    }
+
+    .manage-account__content-option-password_change-wrap-form-submit {
+        font-size: 17px;
+    }
+}

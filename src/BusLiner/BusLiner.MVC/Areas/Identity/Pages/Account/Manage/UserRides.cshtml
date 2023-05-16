@@ -1,0 +1,60 @@
+﻿@page
+@model UserRidesModel
+
+@if(Model.Rides?.Count() == 0) {
+    <div class="manage-account__content-option-rides_title">Ви ще не купували білети.</div>
+}
+else
+{
+    <div class="manage-account__content-option-rides_title">Всі поїздки: </div>
+    <div class="tickets-content__tickets">
+        @foreach (GetUserRidesByEmailDto ride in Model.Rides)
+        {
+            var departureTime = Regex.Replace(ride.DepartureTime.ToString("dd MMM, ddd"), @"\.(.)|\b(.)", m => m.Groups[1].Success ? m.Groups[1].Value : m.Groups[2].Value.ToUpper());
+            var arrivalTime = Regex.Replace(ride.ArrivalTime.ToString("dd MMM, ddd"), @"\.(.)|\b(.)", m => m.Groups[1].Success ? m.Groups[1].Value : m.Groups[2].Value.ToUpper());
+
+            <div class="tickets-content__tickets-ticket">
+                <div class="tickets-content__tickets-ticket-content">
+                    <div class="tickets-content__tickets-ticket-places">
+                        <div class="tickets-content__tickets-ticket-places-from">
+                            <div class="tickets-content__tickets-ticket-places-from-city">@ride.DeparturePlace.City</div>
+                            <div class="tickets-content__tickets-ticket-places-from-station">@ride.DeparturePlace.Station</div>
+                            <div class="tickets-content__tickets-ticket-places-from-street">@ride.DeparturePlace.Street</div>
+                        </div>
+                        <div class="tickets-content__tickets-ticket-places-to">
+                            <div class="tickets-content__tickets-ticket-places-to-city">@ride.ArrivalPlace.City</div>
+                            <div class="tickets-content__tickets-ticket-places-to-station">@ride.ArrivalPlace.Station</div>
+                            <div class="tickets-content__tickets-ticket-places-to-street">@ride.ArrivalPlace.Street</div>
+                        </div>
+                    </div>
+                    <div class="tickets-content__tickets-ticket-when">
+                        <div class="tickets-content__tickets-ticket-when-from_time">
+                            <div class="tickets-content__tickets-ticket-when-from_time-time">@ride.DepartureTime.ToString("HH:mm") <i class="fa-solid fa-van-shuttle"></i></div>
+                            <div class="tickets-content__tickets-ticket-when-from_time-day">@departureTime</div>
+                        </div>
+                        <div class="tickets-content__tickets-ticket-when-line"></div>
+                        <div class="tickets-content__tickets-ticket-when-time_in_trip">
+                            <div class="tickets-content__tickets-ticket-when-time_in_trip-icon"><i class="fa-regular fa-clock"></i></div>
+                            <div class="tickets-content__tickets-ticket-when-time_in_trip-time">@((ride.ArrivalTime - ride.DepartureTime).ToString("hh\\:mm"))</div>
+                        </div>
+                        <div class="tickets-content__tickets-ticket-when-line"></div>
+                        <div class="tickets-content__tickets-ticket-when-to_time">
+                            <div class="tickets-content__tickets-ticket-when-to_time-time"><i class="fa-solid fa-location-dot"></i> @ride.ArrivalTime.ToString("HH:mm")</div>
+                            <div class="tickets-content__tickets-ticket-when-to_time-day">@arrivalTime</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tickets-content__tickets-ticket-buy tickets-content__tickets-ticket-buy-account">
+                    <div class="tickets-content__tickets-ticket-buy-price tickets-content__tickets-ticket-buy-price-account">Загальна сумма: @ride.Total грн</div>
+                    <div class="tickets-content__tickets-ticket-buy-form">
+                        <div class="tickets-content__tickets-ticket-buy-form-tickets_left tickets-content__tickets-ticket-buy-form-tickets_left-account">Замовлено квитків: @ride.TicketsOrdered шт.</div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

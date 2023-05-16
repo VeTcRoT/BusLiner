@@ -88,11 +88,14 @@ window.addEventListener('load', e => {
             let header = document.querySelector('.header__wrap')
 
             if (header != null) {
+                let footer = document.querySelector('.footer')
+
                 document.querySelector('.header__image').remove()
                 header.style.position = 'relative'
                 document.querySelector('.menu__icon').style.top = '0'
                 header.style.backgroundColor = '#0097B2'
                 document.querySelector('.header__logo img').style.width = '90px'
+                footer.style.bottom = '0'
             }
         }
     }

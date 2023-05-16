@@ -1,0 +1,46 @@
+﻿@page
+@model EmailModel
+@{
+    ViewData["Title"] = "Зміна Email";
+    ViewData["ActivePage"] = ManageNavPages.Email;
+}
+
+<div class="manage-account__content-option-email_change">
+    <div class="manage-account__content-option-email_change-title">@ViewData["Title"]</div>
+    <partial name="_StatusMessage" for="StatusMessage" />
+    <div class="manage-account__content-option-email_change-wrap">
+        <form id="email-form" class="manage-account__content-option-email_change-wrap-form" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            @if (Model.IsEmailConfirmed)
+            {
+                <div class="manage-account__content-option-email_change-wrap-form-input" style="background: #dcdcdc;">
+                    <label asp-for="Email"></label>
+                    <div class="manage-account__content-option-email_change-wrap-form-input-disabled">
+                        <input asp-for="Email" disabled />
+                        <div>
+                            <span>✓</span>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="manage-account__content-option-email_change-wrap-form-input">
+                    <label asp-for="Email"></label>
+                    <input asp-for="Email" disabled />
+                    <button id="email-verification" type="submit" asp-page-handler="SendVerificationEmail" class="btn btn-link">Send verification email</button>
+                </div>
+            }
+            <div class="manage-account__content-option-email_change-wrap-form-input">
+                <label asp-for="Input.NewEmail">Новий Email</label>
+                <input asp-for="Input.NewEmail" autocomplete="email" aria-required="true" />
+                <span asp-validation-for="Input.NewEmail" class="text-danger"></span>
+            </div>
+            <button id="change-email-button" type="submit" asp-page-handler="ChangeEmail" class="manage-account__content-option-email_change-wrap-form-submit">Змінити email</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

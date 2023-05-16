@@ -12,13 +12,13 @@ namespace BusLiner.Persistence.Repositories
 
         public IBaseRepository<ArrivalPlace> ArrivalPlaceRepository { get; }
 
-        public IBaseRepository<Order> OrderRepository { get; set; }
+        public IOrderRepository OrderRepository { get; set; }
 
         private bool disposed = false;
 
         public UnitOfWork(BusLinerDbContext dbContext, IRideRepository rideRepository, 
-            IBaseRepository<DeparturePlace> departurePlaceRepository, IBaseRepository<ArrivalPlace> arrivalPlaceRepository, 
-            IBaseRepository<Order> orderRepository)
+            IBaseRepository<DeparturePlace> departurePlaceRepository, IBaseRepository<ArrivalPlace> arrivalPlaceRepository,
+            IOrderRepository orderRepository)
         {
             _dbContext = dbContext;
             RideRepository = rideRepository;
