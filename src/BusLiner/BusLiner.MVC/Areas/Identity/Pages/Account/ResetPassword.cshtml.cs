@@ -4,24 +4,23 @@
 
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.WebUtilities;
 
-namespace BusLiner.MVC.Areas.Identity.Pages.Account.Manage
+namespace BusLiner.MVC.Areas.Identity.Pages.Account
 {
-    public class SetPasswordModel : PageModel
+    public class ResetPasswordModel : PageModel
     {
         private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
 
-        public SetPasswordModel(
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager)
+        public ResetPasswordModel(UserManager<IdentityUser> userManager)
         {
             _userManager = userManager;
-            _signInManager = signInManager;
         }
 
         /// <summary>
@@ -35,13 +34,6 @@ namespace BusLiner.MVC.Areas.Identity.Pages.Account.Manage
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
         ///     directly from your code. This API may change or be removed in future releases.
         /// </summary>
-        [TempData]
-        public string StatusMessage { get; set; }
-
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         public class InputModel
         {
             /// <summary>
@@ -49,37 +41,50 @@ namespace BusLiner.MVC.Areas.Identity.Pages.Account.Manage
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [Required]
+            [EmailAddress]
+            public string Email { get; set; }
+
+            /// <summary>
+            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+            ///     directly from your code. This API may change or be removed in future releases.
+            /// </summary>
+            [Required]
             [StringLength(100, ErrorMessage = "{0} має містити принаймні {2} і не більше {1} символів.", MinimumLength = 6)]
             [DataType(DataType.Password)]
-            [Display(Name = "New password")]
-            public string NewPassword { get; set; }
+            public string Password { get; set; }
 
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm new password")]
-            [Compare("NewPassword", ErrorMessage = "Новий пароль і пароль підтвердження не збігаються.")]
+            [Display(Name = "Confirm password")]
+            [Compare("Password", ErrorMessage = "Пароль і пароль підтвердження не збігаються.")]
             public string ConfirmPassword { get; set; }
+
+            /// <summary>
+            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+            ///     directly from your code. This API may change or be removed in future releases.
+            /// </summary>
+            [Required]
+            public string Code { get; set; }
+
         }
 
-        public async Task<IActionResult> OnGetAsync()
+        public IActionResult OnGet(string code = null)
         {
-            var user = await _userManager.GetUserAsync(User);
-            if (user == null)
+            if (code == null)
             {
-                return NotFound($"Не вдалося завантажити користувача з ідентифікатором '{_userManager.GetUserId(User)}'.");
+                return BadRequest("Для скидання пароля необхідно надати код.");
             }
-
-            var hasPassword = await _userManager.HasPasswordAsync(user);
-
-            if (hasPassword)
+            else
             {
-                return RedirectToPage("./ChangePassword");
+                Input = new InputModel
+                {
+                    Code = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(code))
+                };
+                return Page();
             }
-
-            return Page();
         }
 
         public async Task<IActionResult> OnPostAsync()
@@ -89,26 +94,24 @@ namespace BusLiner.MVC.Areas.Identity.Pages.Account.Manage
                 return Page();
             }
 
-            var user = await _userManager.GetUserAsync(User);
+            var user = await _userManager.FindByEmailAsync(Input.Email);
             if (user == null)
             {
-                return NotFound($"Не вдалося завантажити користувача з ідентифікатором '{_userManager.GetUserId(User)}'.");
+                // Don't reveal that the user does not exist
+                return RedirectToPage("./ResetPasswordConfirmation");
             }
 
-            var addPasswordResult = await _userManager.AddPasswordAsync(user, Input.NewPassword);
-            if (!addPasswordResult.Succeeded)
+            var result = await _userManager.ResetPasswordAsync(user, Input.Code, Input.Password);
+            if (result.Succeeded)
             {
-                foreach (var error in addPasswordResult.Errors)
-                {
-                    ModelState.AddModelError(string.Empty, error.Description);
-                }
-                return Page();
+                return RedirectToPage("./ResetPasswordConfirmation");
             }
 
-            await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Ваш пароль встановлено.";
-
-            return RedirectToPage();
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
+            }
+            return Page();
         }
     }
 }

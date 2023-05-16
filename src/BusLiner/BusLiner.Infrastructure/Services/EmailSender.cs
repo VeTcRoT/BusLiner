@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.UI.Services;
 using System.Net.Mail;
 using System.Net;
-using System.Text.Encodings.Web;
 
 namespace BusLiner.Infrastructure.Services
 {

@@ -128,7 +128,7 @@ namespace BusLiner.MVC.Areas.Identity.Pages.Account
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, "Недійсна спроба входу.");
                     return Page();
                 }
             }

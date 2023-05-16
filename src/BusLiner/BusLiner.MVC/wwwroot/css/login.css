@@ -86,3 +86,22 @@ hr {
 .login__wrap-additional-btn-text {
     font-size: 16px;
 }
+
+.manage-account__content-option-email_change-resend {
+    max-width: 1100px;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.manage-account__content-option-email_change-wrap-resend .manage-account__content-option-email_change-wrap-form-input,
+.manage-account__content-option-email_change-wrap-resend .manage-account__content-option-email_change-wrap-form-submit,
+.manage-account__content-option-email_change-wrap-resend div{
+    display: block;
+    margin: 0 auto;
+}
+
+.manage-account__content-option-email_change-wrap-resend .manage-account__content-option-email_change-wrap-form-submit {
+    margin-top: 20px;
+}

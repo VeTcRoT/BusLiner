@@ -91,7 +91,7 @@ namespace BusLiner.MVC.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound($"Не вдалося завантажити користувача з ідентифікатором '{_userManager.GetUserId(User)}'.");
             }
 
             await LoadAsync(user);
@@ -103,7 +103,7 @@ namespace BusLiner.MVC.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound($"Не вдалося завантажити користувача з ідентифікатором '{_userManager.GetUserId(User)}'.");
             }
 
             if (!ModelState.IsValid)
@@ -123,16 +123,15 @@ namespace BusLiner.MVC.Areas.Identity.Pages.Account.Manage
                     pageHandler: null,
                     values: new { area = "Identity", userId = userId, email = Input.NewEmail, code = code },
                     protocol: Request.Scheme);
-                await _emailSender.SendEmailAsync(
-                    Input.NewEmail,
-                    "Confirm your email",
-                    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
-                StatusMessage = "Confirmation link to change email sent. Please check your email.";
+                await _emailSender.SendEmailAsync(Input.NewEmail, "Підтвердження вашого email",
+                        $"Щоб підтвердити свій аккаунт, будь ласка, <a href='{callbackUrl}'>натисніть сюди</a>.");
+
+                StatusMessage = "Надіслано посилання для підтвердження зміни електронної пошти. Будь ласка, перевірте свою електронну пошту.";
                 return RedirectToPage();
             }
 
-            StatusMessage = "Your email is unchanged.";
+            StatusMessage = "Ваша електронна пошта не змінена.";
             return RedirectToPage();
         }
 
@@ -141,7 +140,7 @@ namespace BusLiner.MVC.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound($"Не вдалося завантажити користувача з ідентифікатором '{_userManager.GetUserId(User)}'.");
             }
 
             if (!ModelState.IsValid)
@@ -159,12 +158,11 @@ namespace BusLiner.MVC.Areas.Identity.Pages.Account.Manage
                 pageHandler: null,
                 values: new { area = "Identity", userId = userId, code = code },
                 protocol: Request.Scheme);
-            await _emailSender.SendEmailAsync(
-                email,
-                "Confirm your email",
-                $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
-            StatusMessage = "Verification email sent. Please check your email.";
+            await _emailSender.SendEmailAsync(email, "Підтвердження вашого email",
+                        $"Щоб підтвердити свій аккаунт, будь ласка, <a href='{callbackUrl}'>натисніть сюди</a>.");
+
+            StatusMessage = "Електронний лист для підтвердження надіслано. Будь ласка, перевірте свою електронну пошту.";
             return RedirectToPage();
         }
     }

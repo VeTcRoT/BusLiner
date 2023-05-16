@@ -84,7 +84,7 @@ namespace BusLiner.MVC.Areas.Identity.Pages.Account
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [StringLength(100, ErrorMessage = "{0} має містити принаймні {2} і не більше {1} символів.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Password")]
             public string Password { get; set; }
@@ -95,7 +95,7 @@ namespace BusLiner.MVC.Areas.Identity.Pages.Account
             /// </summary>
             [DataType(DataType.Password)]
             [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Compare("Password", ErrorMessage = "Пароль і пароль підтвердження не збігаються.")]
             public string ConfirmPassword { get; set; }
         }
 
@@ -131,8 +131,8 @@ namespace BusLiner.MVC.Areas.Identity.Pages.Account
                         values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
 
-                    await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{callbackUrl}'>clicking here</a>.");
+                    await _emailSender.SendEmailAsync(Input.Email, "Підтвердження вашого email",
+                        $"Щоб підтвердити свій аккаунт, будь ласка, <a href='{callbackUrl}'>натисніть сюди</a>.");
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
