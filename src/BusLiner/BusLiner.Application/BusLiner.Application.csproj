@@ -17,8 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\CustomTrip\Commands\" />
-    <Folder Include="Features\CustomTrip\Queries\" />
+    <Folder Include="Features\CustomTrips\Queries\" />
     <Folder Include="Features\Rides\Commands\" />
     <Folder Include="Profiles\" />
   </ItemGroup>

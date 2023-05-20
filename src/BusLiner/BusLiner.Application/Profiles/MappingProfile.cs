@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BusLiner.Application.Features.ArrivalPlaces.Queries.ListAllArrivalPlaces;
+using BusLiner.Application.Features.CustomTrips.Commands.AddCustomTrip;
 using BusLiner.Application.Features.DeparturePlaces.Queries.ListAllDeparturePlaces;
 using BusLiner.Application.Features.Orders.Commands.CreateOrder;
 using BusLiner.Application.Features.Orders.Queries.GetUserRidesByEmail;
@@ -17,6 +18,8 @@ namespace BusLiner.Application.Profiles
             CreateMap<CreateOrderQuery, Order>();
 
             CreateMap<Ride, GetUserRidesByEmailDto>();
+
+            CreateMap<AddCustomTripCommand, CustomTrip>();
         }
     }
 }
