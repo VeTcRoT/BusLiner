@@ -35,7 +35,7 @@ namespace BusLiner.Application.Features.Orders.Commands.CreateOrder
 
             using (SHA256 sha256Hash = SHA256.Create())
             {
-                var dataToHash = rideToChange.DeparturePlace.City + rideToChange.ArrivalPlace.City + rideToChange.Id;
+                var dataToHash = rideToChange.DeparturePlace.City + rideToChange.ArrivalPlace.City + DateTime.Now;
 
                 mappedRequest.TicketCode = Convert.ToHexString(
                     sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(dataToHash)));

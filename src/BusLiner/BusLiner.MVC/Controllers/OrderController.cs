@@ -56,7 +56,12 @@ namespace BusLiner.MVC.Controllers
 
             await _mediator.Send(request);
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("ThanksForOrder");
+        }
+
+        public IActionResult ThanksForOrder()
+        {
+            return View();
         }
     }
 }

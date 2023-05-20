@@ -8,6 +8,7 @@ namespace BusLiner.Domain.Interfaces.Repositories
         IBaseRepository<DeparturePlace> DeparturePlaceRepository { get; }
         IBaseRepository<ArrivalPlace> ArrivalPlaceRepository { get; }
         IOrderRepository OrderRepository { get; }
+        IBaseRepository<CustomTrip> CustomTripRepository { get; }
         Task SaveAsync();
     }
 }

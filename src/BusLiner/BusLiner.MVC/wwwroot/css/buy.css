@@ -338,6 +338,26 @@
     line-height: 18px;
 }
 
+.order-complete {
+    max-width: 1100px;
+    margin: 25px auto;
+    padding: 10px 0;
+}
+
+.order-complete__wrap_title {
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.order-complete__wrap_body {
+    font-size: 17px;
+    line-height: 23px;
+}
+
+strong {
+    font-weight: bold;
+}
+
 @media (max-width: 1060px) {
     .ticket_buy__wrap {
         flex-direction: column;
