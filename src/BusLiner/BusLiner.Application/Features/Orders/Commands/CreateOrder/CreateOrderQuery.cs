@@ -1,5 +1,4 @@
-﻿using BusLiner.Domain.Entities;
-using MediatR;
+﻿using MediatR;
 
 namespace BusLiner.Application.Features.Orders.Commands.CreateOrder
 {

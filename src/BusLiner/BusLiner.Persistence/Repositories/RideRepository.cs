@@ -16,7 +16,7 @@ namespace BusLiner.Persistence.Repositories
         public async Task<Ride> GetRideByIdAsync(int id)
         {
             return await _dbContext.Rides.Include(r => r.DeparturePlace)
-                .Include(r => r.ArrivalPlace).FirstOrDefaultAsync(r => r.Id == id);
+                .Include(r => r.ArrivalPlace).FirstAsync(r => r.Id == id);
         }
 
         public async Task<IEnumerable<Ride>?> GetRidesByQueryAsync(string from, string to, DateTime departureDate)
