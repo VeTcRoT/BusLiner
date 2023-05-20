@@ -3,6 +3,8 @@
     padding: 0 10px;
     margin: 0 auto;
     padding-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .tickets-content__title {

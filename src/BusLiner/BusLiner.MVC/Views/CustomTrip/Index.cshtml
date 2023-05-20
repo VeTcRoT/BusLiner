@@ -1,0 +1,53 @@
+﻿@model AddCustomTripCommand
+
+<div class="manage-account__content-option-email_change manage-account__content-option-email_change-resend">
+    <div class="manage-account__content-option-email_change-title">Замовлення поїздки</div>
+    <div class="manage-account__content-option-email_change-subtitle">Після того, як ви заповните цю форму, наші представники зв'яжуться з вами для уточнення деталей та підтвердження замовлення. </div>
+    <hr />
+    <div class="manage-account__content-option-email_change-wrap manage-account__content-option-email_change-wrap-resend">
+        <form method="post" asp-action="SaveCustomTrip">
+            <span asp-validation-for="From" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <div class="manage-account__content-option-email_change-wrap-form-input">
+                <label asp-for="From" class="form-label">Звідки</label>
+                <input asp-for="From" class="form-control" />
+            </div>
+            <span asp-validation-for="To" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <div class="manage-account__content-option-email_change-wrap-form-input">
+                <label asp-for="To" class="form-label">Куди</label>
+                <input asp-for="To" class="form-control" aria-required="true" />
+            </div>
+            <span asp-validation-for="DepartureTime" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <div class="manage-account__content-option-email_change-wrap-form-input">
+                <label asp-for="DepartureTime" class="form-label">Час відправки</label>
+                <input asp-for="DepartureTime" class="form-control" aria-required="true" />
+            </div>
+            <span asp-validation-for="AmountOfPassengers" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <div class="manage-account__content-option-email_change-wrap-form-input">
+                <label asp-for="AmountOfPassengers" class="form-label">К-сть пасажирів</label>
+                <input asp-for="AmountOfPassengers" class="form-control" aria-required="true" />
+            </div>
+            <span asp-validation-for="FirstName" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <div class="manage-account__content-option-email_change-wrap-form-input">
+                <label asp-for="FirstName" class="form-label">Ім'я</label>
+                <input asp-for="FirstName" class="form-control" aria-required="true" />
+            </div>
+            <span asp-validation-for="LastName" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <div class="manage-account__content-option-email_change-wrap-form-input">
+                <label asp-for="LastName" class="form-label">Прізвище</label>
+                <input asp-for="LastName" class="form-control" aria-required="true" />
+            </div>
+            <span asp-validation-for="Phone" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <div class="manage-account__content-option-email_change-wrap-form-input">
+                <label asp-for="Phone" class="form-label">Телефон</label>
+                <input asp-for="Phone" class="form-control" aria-required="true" />
+            </div>
+            <span asp-validation-for="Email" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <div class="manage-account__content-option-email_change-wrap-form-input">
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email" class="form-control" aria-required="true" />
+            </div>
+            <button type="submit" class="manage-account__content-option-email_change-wrap-form-submit">Надіслати</button>
+            <div asp-validation-summary="All" style="margin-top: 20px; text-align: center; max-width: 500px;"></div>
+        </form>
+    </div>
+</div>

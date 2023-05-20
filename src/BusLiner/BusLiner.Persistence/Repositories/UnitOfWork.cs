@@ -23,7 +23,7 @@ namespace BusLiner.Persistence.Repositories
             IBaseRepository<DeparturePlace> departurePlaceRepository, 
             IBaseRepository<ArrivalPlace> arrivalPlaceRepository, 
             IOrderRepository orderRepository, 
-            IBaseRepository<CustomTrip> customTripRepository, bool disposed)
+            IBaseRepository<CustomTrip> customTripRepository)
         {
             _dbContext = dbContext;
             RideRepository = rideRepository;
@@ -31,7 +31,6 @@ namespace BusLiner.Persistence.Repositories
             ArrivalPlaceRepository = arrivalPlaceRepository;
             OrderRepository = orderRepository;
             CustomTripRepository = customTripRepository;
-            this.disposed = disposed;
         }
 
         public async Task SaveAsync()
