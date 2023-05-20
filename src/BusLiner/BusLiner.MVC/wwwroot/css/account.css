@@ -146,6 +146,22 @@
     font-size: 25px;
 }
 
+@media (max-width: 1080px) {
+    .tickets-content__tickets-ticket-account {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .tickets-content__tickets-ticket-account .tickets-content__tickets-ticket-content {
+        border-right: 0;
+        padding-right: 0;
+    }
+
+    .tickets-content__tickets-ticket-buy-account {
+        align-items: center;
+    }
+}
+
 @media (max-width: 985px) {
     .manage-account__content-option-email_change, .manage-account__content-option-password_change {
         margin-bottom: 0;

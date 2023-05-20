@@ -20,12 +20,12 @@
                         <div class="ticket_buy__form-passengers-name-inputs">
                             <div class="ticket_buy__form-passengers-name-inputs-name-wrap">
                                 <label for="firstname">Ім'я:</label>
-                                <input type="text" placeholder="Введіть ім'я" name="FirstName" asp-for="FirstName" class="ticket_buy__form-passengers-name-inputs-name" id="firstname">
+                                <input type="text" placeholder="Введіть ім'я" name="FirstName" asp-for="FirstName" class="ticket_buy__form-passengers-name-inputs-name" id="firstname" required>
                                 <span asp-validation-for="FirstName"></span>
                             </div>
                             <div class="ticket_buy__form-passengers-name-inputs-lastname-wrap">
                                 <label for="lastname">Прізвище:</label>
-                                <input type="text" placeholder="Введіть прізвище" name="LastName" asp-for="LastName" class="ticket_buy__form-passengers-name-inputs-surname" id="lastname">
+                                <input type="text" placeholder="Введіть прізвище" name="LastName" asp-for="LastName" class="ticket_buy__form-passengers-name-inputs-surname" id="lastname" required>
                                 <span asp-validation-for="LastName"></span>
                             </div>
                         </div>
@@ -39,7 +39,7 @@
                     <div class="ticket_buy__form-contacts-inputs">
                         <div>
                             <label for="email">Email:</label>
-                            <input type="email" placeholder="Введіть email" name="Email" asp-for="Email" class="ticket_buy__form-contacts-inputs-email" id="email">
+                            <input type="email" placeholder="Введіть email" name="Email" asp-for="Email" class="ticket_buy__form-contacts-inputs-email" id="email" required>
                             <span asp-validation-for="Email"></span>
                         </div>
                         <div>
