@@ -14,17 +14,17 @@
     justify-content: space-between;
 }
 
-.tickets-content__tickets-ticket-buy-form-button-content-text a{
-    text-decoration: none;
-    color: #fff;
-}
-
-.tickets-content__title-sortby-button-button {
+.tickets-content__title-sortby-button-button, .tickets-content__title-create-create_ride {
     padding: 10px 30px;
     font-size: 20px;
 }
 
-.tickets-content__title-sortby-button-button:hover {
+.tickets-content__title-create-create_ride a {
+    text-decoration: none;
+    color: #000;
+}
+
+.tickets-content__title-sortby-button-button:hover, .tickets-content__title-create-create_ride:hover {
     cursor: pointer;
 }
 
@@ -144,7 +144,7 @@
     gap: 10px;
 }
 
-.tickets-content__tickets-ticket-buy-form-button {
+.tickets-content__tickets-ticket-buy-form-button a{
     padding: 15px 55px;
     font-size: 18px;
     font-weight: bold;
@@ -155,19 +155,37 @@
     min-width: fit-content;
     transition: background 0.3s ease-out;
     margin-top: 20px;
+    display: block;
+    text-decoration: none;
+}
+
+.tickets-content__tickets-ticket-buy-form-button-admin a {
+    margin-top: 0;
+    font-size: 17px;
+    padding: 10px 55px;
+    display: block;
+}
+
+.tickets-content__tickets-ticket-buy-form-button-admin-delete {
+    border: 0;
+    margin: 0;
+    background: 0;
+}
+
+.tickets-content__tickets-ticket-buy-form-button-admin-delete a {
+    background: red;
+    padding: 10px 48px;
+}
+
+.tickets-content__tickets-ticket-buy-form-button-admin-delete a:hover {
+    background: #d40000!important;
 }
 
 .tickets-content__tickets-ticket-buy-form-tickets_left {
     font-size: 15px;
 }
 
-.tickets-content__tickets-ticket-buy-form-button-content {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.tickets-content__tickets-ticket-buy-form-button:hover {
+.tickets-content__tickets-ticket-buy-form-button a:hover {
     background: rgb(218, 142, 1);
     cursor: pointer;
 }
@@ -241,7 +259,7 @@
 }
 
 @media (max-width: 485px){
-    .tickets-content__title-sortby-button-button {
+    .tickets-content__title-sortby-button-button, .tickets-content__title-create-create_ride {
         padding: 10px 20px;
         font-size: 16px;
     }
@@ -261,7 +279,7 @@
         gap: 10px;
     }
 
-    .tickets-content__tickets-ticket-buy-form-button {
+    .tickets-content__tickets-ticket-buy-form-button a {
         margin-top: 0;
     }
 
@@ -281,7 +299,7 @@
         align-items: flex-start;
     }
 
-    .tickets-content__title-sortby-button-button {
+    .tickets-content__title-sortby-button-button, .tickets-content__title-create-create_ride {
         padding: 10px 5px;
     }
 

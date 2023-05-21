@@ -138,6 +138,12 @@ input:focus {
     color: #fff;
     font-weight: bold;
     font-size: 18px;
+    transition: background 0.3s ease-out;
+}
+
+.header__form-button:hover {
+    background: rgb(218, 142, 1);
+    cursor: pointer;
 }
 
     .header__form-button .fa-magnifying-glass {

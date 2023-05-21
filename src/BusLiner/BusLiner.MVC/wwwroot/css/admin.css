@@ -1,0 +1,30 @@
+﻿.admin {
+    max-width: 1100px;
+    padding: 0 10px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.admin__nav-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.admin__nav-wrap-item {
+    box-sizing: border-box;
+}
+
+.admin__nav-wrap-item a {
+    text-decoration: none;
+    color: #fff;
+    background: grey;
+    padding: 10px 40px;
+    display: block;
+}
+
+.admin__nav-wrap-item a:hover {
+    background: #696969;
+}

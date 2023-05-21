@@ -322,9 +322,9 @@ window.addEventListener('load', e => {
         let tickets = document.querySelectorAll('.tickets-content__tickets-ticket')
 
         Array.from(tickets).sort(function(a, b) {
-            a = ~~(a.querySelector('.tickets-content__tickets-ticket-buy-price').innerHTML.replace(/[^0-9,.]/g,""))
+            a = ~~(a.querySelector('.tickets-content__tickets-ticket-buy-price').innerHTML.replace(/,.*$/, ''))
 
-            b = ~~(b.querySelector('.tickets-content__tickets-ticket-buy-price').innerHTML.replace(/[^0-9,.]/g,""))
+            b = ~~(b.querySelector('.tickets-content__tickets-ticket-buy-price').innerHTML.replace(/,.*$/, ''))
 
             if (asc)
                 return a - b

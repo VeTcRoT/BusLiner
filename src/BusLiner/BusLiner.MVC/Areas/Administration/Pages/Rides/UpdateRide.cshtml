@@ -1,0 +1,68 @@
+﻿@page
+@model BusLiner.MVC.Areas.Administration.Pages.Rides.UpdateRideModel
+
+<div class="manage-account__content-option-email_change manage-account__content-option-email_change-resend">
+    <div class="manage-account__content-option-email_change-title">Редагування поїздки</div>
+    <hr />
+    <div class="manage-account__content-option-email_change-wrap manage-account__content-option-email_change-wrap-resend">
+        <form method="post">
+            <input type="hidden" asp-for="Ride.Id" />
+            <span asp-validation-for="Ride.DeparturePlace.City" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <div class="manage-account__content-option-email_change-wrap-form-input">
+                <label asp-for="Ride.DeparturePlace.City" class="form-label">Звідки</label>
+                <select asp-for="Ride.DeparturePlaceId">
+                    @foreach (GetAllDeparturePlacesDto depPlace in Model.DeparturePlaces)
+                    {
+                        if (Model.Ride.DeparturePlace.City == depPlace.City
+                        && Model.Ride.DeparturePlace.Street == depPlace.Street)
+                        {
+                            <option value="@depPlace.Id" selected>@depPlace.City (@depPlace.Street)</option>
+                            continue;
+                        }
+
+                        <option value="@depPlace.Id">@depPlace.City (@depPlace.Street)</option>
+                    }
+                </select>
+            </div>
+            <span asp-validation-for="Ride.ArrivalPlace.City" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <div class="manage-account__content-option-email_change-wrap-form-input">
+                <label asp-for="Ride.ArrivalPlace.City" class="form-label">Куди</label>
+                <select asp-for="Ride.ArrivalPlaceId">
+                    @foreach (GetAllArrivalPlacesDto arrPlace in Model.ArrivalPlaces)
+                    {
+                        if (Model.Ride.ArrivalPlace.City == arrPlace.City
+                        && Model.Ride.ArrivalPlace.Street == arrPlace.Street)
+                        {
+                            <option value="@arrPlace.Id" selected>@arrPlace.City (@arrPlace.Street)</option>
+                            continue;
+                        }
+
+                        <option value="@arrPlace.Id">@arrPlace.City (@arrPlace.Street)</option>
+                    }
+                </select>
+            </div>
+            <span asp-validation-for="Ride.DepartureTime" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <div class="manage-account__content-option-email_change-wrap-form-input">
+                <label asp-for="Ride.DepartureTime" class="form-label">Час відправки</label>
+                <input asp-for="Ride.DepartureTime" class="form-control" aria-required="true" />
+            </div>
+            <span asp-validation-for="Ride.ArrivalTime" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <div class="manage-account__content-option-email_change-wrap-form-input">
+                <label asp-for="Ride.ArrivalTime" class="form-label">Час прибуття</label>
+                <input asp-for="Ride.ArrivalTime" class="form-control" aria-required="true" />
+            </div>
+            <span asp-validation-for="Ride.TicketsAvailable" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <div class="manage-account__content-option-email_change-wrap-form-input">
+                <label asp-for="Ride.TicketsAvailable" class="form-label">Доступно квитків</label>
+                <input asp-for="Ride.TicketsAvailable" class="form-control" aria-required="true" />
+            </div>
+            <span asp-validation-for="Ride.Price" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <div class="manage-account__content-option-email_change-wrap-form-input">
+                <label asp-for="Ride.Price" class="form-label">Ціна</label>
+                <input asp-for="Ride.Price" class="form-control" aria-required="true" />
+            </div>
+            <button type="submit" class="manage-account__content-option-email_change-wrap-form-submit">Змінити</button>
+            <div asp-validation-summary="All" style="margin-top: 20px; text-align: center; max-width: 500px;"></div>
+        </form>
+    </div>
+</div>

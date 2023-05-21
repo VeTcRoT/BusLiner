@@ -37,5 +37,10 @@ namespace BusLiner.Persistence.Repositories
 
             return rides;
         }
+
+        public async Task<IEnumerable<Ride>> GetAllRidesAsync()
+        {
+            return await _dbContext.Rides.Include(r => r.DeparturePlace).Include(r => r.ArrivalPlace).ToListAsync();
+        }
     }
 }

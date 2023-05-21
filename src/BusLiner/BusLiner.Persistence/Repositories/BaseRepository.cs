@@ -27,12 +27,12 @@ namespace BusLiner.Persistence.Repositories
             return entity;
         }
 
-        public void UpdateAsync(T entity)
+        public void Update(T entity)
         {
             _entitySet.Entry(entity).State = EntityState.Modified;
         }
 
-        public void DeleteAsync(T entity)
+        public void Delete(T entity)
         {
             _entitySet.Remove(entity);
         }

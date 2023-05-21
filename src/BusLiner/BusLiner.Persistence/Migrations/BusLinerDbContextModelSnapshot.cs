@@ -44,7 +44,7 @@ namespace BusLiner.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ArrivalPlaces");
+                    b.ToTable("ArrivalPlaces", (string)null);
                 });
 
             modelBuilder.Entity("BusLiner.Domain.Entities.CustomTrip", b =>
@@ -86,7 +86,7 @@ namespace BusLiner.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CustomTrips");
+                    b.ToTable("CustomTrips", (string)null);
                 });
 
             modelBuilder.Entity("BusLiner.Domain.Entities.DeparturePlace", b =>
@@ -111,7 +111,7 @@ namespace BusLiner.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("DeparturePlaces");
+                    b.ToTable("DeparturePlaces", (string)null);
                 });
 
             modelBuilder.Entity("BusLiner.Domain.Entities.Order", b =>
@@ -158,7 +158,7 @@ namespace BusLiner.Persistence.Migrations
 
                     b.HasIndex("RideId");
 
-                    b.ToTable("Orders");
+                    b.ToTable("Orders", (string)null);
                 });
 
             modelBuilder.Entity("BusLiner.Domain.Entities.Ride", b =>
@@ -193,7 +193,7 @@ namespace BusLiner.Persistence.Migrations
 
                     b.HasIndex("DeparturePlaceId");
 
-                    b.ToTable("Rides");
+                    b.ToTable("Rides", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

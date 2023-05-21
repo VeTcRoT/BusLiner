@@ -7,5 +7,6 @@ namespace BusLiner.Domain.Interfaces.Repositories
         Task<IEnumerable<Ride>?> GetRidesByQueryAsync(string from, string to, DateTime departureDate);
         Task<IEnumerable<Ride>> GetTopFiveRidesAsync();
         Task<Ride> GetRideByIdAsync(int id);
+        Task<IEnumerable<Ride>> GetAllRidesAsync();
     }
 }

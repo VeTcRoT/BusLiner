@@ -1,0 +1,18 @@
+﻿@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<div class="admin">
+    <div class="admin__nav">
+        <ul class="admin__nav-wrap">
+            <li class="admin__nav-wrap-item"><a asp-page="./AllRides">Поїздки</a></li>
+            <li class="admin__nav-wrap-item"><a href="#">Міста</a></li>
+            <li class="admin__nav-wrap-item"><a href="#">Замовлення</a></li>
+            <li class="admin__nav-wrap-item"><a href="#">Користувачі</a></li>
+            <li class="admin__nav-wrap-item"><a href="#">Заявки на поїздки</a></li>
+        </ul>
+    </div>
+    <div class="admin__content">
+        @RenderBody()
+    </div>
+</div>

@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusLiner.Persistence", "Bus
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusLiner.MVC", "BusLiner.MVC\BusLiner.MVC.csproj", "{32E3433F-38FE-47BC-86B5-E8596A5F2B26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusLiner.Infrastructure", "BusLiner.Infrastructure\BusLiner.Infrastructure.csproj", "{160271F6-EEF4-4264-9A82-63812749EFC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusLiner.Infrastructure", "BusLiner.Infrastructure\BusLiner.Infrastructure.csproj", "{160271F6-EEF4-4264-9A82-63812749EFC0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

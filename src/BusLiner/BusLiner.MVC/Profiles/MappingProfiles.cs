@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BusLiner.Application.Features.Orders.Commands.CreateOrder;
+using BusLiner.Domain.Entities;
 using BusLiner.MVC.ViewModel;
 
 namespace BusLiner.MVC.Profiles

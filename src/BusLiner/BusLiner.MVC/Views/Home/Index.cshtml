@@ -4,22 +4,22 @@
 }
 <div class="header__form">
     <form asp-controller="Tickets" asp-action="Index" method="post" autocomplete="off">
-            <input type="text" name="From" placeholder="Звідки" class="header__form-from" required>
-            <div class="header__form-from-cities">
-                @foreach (ListAllDeparturePlacesDto departurePlace in Model.DeparturePlaces)
-                {
-                    <div class="header__form-from-cities-city">@departurePlace.City</div>
-                }
-            </div>
+        <input type="text" name="From" placeholder="Звідки" class="header__form-from" required>
+        <div class="header__form-from-cities">
+            @foreach (ListAllDeparturePlacesDto departurePlace in Model.DeparturePlaces)
+            {
+                <div class="header__form-from-cities-city">@departurePlace.City</div>
+            }
+        </div>
 
         <input type="text" name="To" placeholder="Куди" class="header__form-to" required>
-            <div class ="header__form-to-cities">
-                @foreach (ListAllArrivalPlacesDto arrivalPlace in Model.ArrivalPlaces)
-                {
-                    <div class="header__form-to-cities-city">@arrivalPlace.City</div>
-                }
-            </div>
-        
+        <div class="header__form-to-cities">
+            @foreach (ListAllArrivalPlacesDto arrivalPlace in Model.ArrivalPlaces)
+            {
+                <div class="header__form-to-cities-city">@arrivalPlace.City</div>
+            }
+        </div>
+
         <input type="date" name="DepartureDate" placeholder="yyyy-mm-dd" class="header__form-date" onkeydown="return false" required>
         <button type="submit" class="header__form-button">Пошук<i class="fa-solid fa-magnifying-glass"></i></button>
     </form>
@@ -91,18 +91,9 @@
                             <div class="tickets-content__tickets-ticket-buy">
                                 <div class="tickets-content__tickets-ticket-buy-price">@ride.Price.ToString("F2") грн</div>
                                 <div class="tickets-content__tickets-ticket-buy-form">
-                                    <form action="">
-                                        <button class="tickets-content__tickets-ticket-buy-form-button" type="submit">
-                                            <div class="tickets-content__tickets-ticket-buy-form-button-content">
-                                                <div class="tickets-content__tickets-ticket-buy-form-button-content-text">
-                                                    <a asp-controller="Order" asp-action="Index" asp-route-rideId="@ride.Id">Купити</a>
-                                                </div>
-                                                <div class="tickets-content__tickets-ticket-buy-form-button-content-icon">
-                                                    <i class="fa-solid fa-cart-shopping"></i>
-                                                </div>
-                                            </div>
-                                        </button>
-                                    </form>
+                                    <div class="tickets-content__tickets-ticket-buy-form-button">
+                                        <a asp-controller="Order" asp-action="Index" asp-route-rideId="@ride.Id">Купити  <i class="fa-solid fa-cart-shopping"></i></a>
+                                    </div>
                                     <div class="tickets-content__tickets-ticket-buy-form-tickets_left">Залишилось квитків: @ride.TicketsAvailable шт.</div>
                                 </div>
                             </div>

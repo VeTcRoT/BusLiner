@@ -1,6 +1,9 @@
-﻿namespace BusLiner.Domain.Entities
+﻿using BusLiner.Domain.Entities;
+using MediatR;
+
+namespace BusLiner.Application.Features.Rides.Commands.UpdateRide
 {
-    public class Ride
+    public class UpdateRideCommand : IRequest
     {
         public int Id { get; set; }
         public int TicketsAvailable { get; set; }
@@ -8,8 +11,6 @@
         public DateTime ArrivalTime { get; set; }
         public double Price { get; set; }
         public int DeparturePlaceId { get; set; }
-        public DeparturePlace DeparturePlace { get; set; } = null!;
         public int ArrivalPlaceId { get; set; }
-        public ArrivalPlace ArrivalPlace { get; set; } = null!;
     }
 }

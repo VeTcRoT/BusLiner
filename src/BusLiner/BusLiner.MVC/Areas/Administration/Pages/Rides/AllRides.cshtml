@@ -1,35 +1,10 @@
-﻿@model TicketsVM
-
-<div class="header__form">
-    <form asp-action="Index" method="post" autocomplete="off">
-        <input type="text" name="From" asp-for="From" placeholder="Звідки" class="header__form-from" required value="@Model.From">
-        <span asp-validation-for="From" class="header__form-from-validation"></span>
-        <div class="header__form-from-cities">
-            @foreach (ListAllDeparturePlacesDto departurePlace in Model.DeparturePlaces)
-            {
-                <div class="header__form-from-cities-city">@departurePlace.City</div>
-            }
-        </div>
-
-        <input type="text" name="To" asp-for="To" placeholder="Куди" class="header__form-to" required value="@Model.To">
-        <span asp-validation-for="To" class="header__form-to-validation"></span>
-        <div class="header__form-to-cities">
-            @foreach (ListAllArrivalPlacesDto arrivalPlace in Model.ArrivalPlaces)
-            {
-                <div class="header__form-to-cities-city">@arrivalPlace.City</div>
-            }
-        </div>
-        <input type="date" name="DepartureDate" asp-for="DepartureDate" placeholder="Дата" class="header__form-date" onkeydown="return false" value="@Model.DepartureDate.ToString("yyy-MM-dd")" required>
-        <span asp-validation-for="DepartureDate" class="header__form-date-validation"></span>
-        <button type="submit" class="header__form-button">Пошук<i class="fa-solid fa-magnifying-glass"></i></button>
-    </form>
-</div>
+﻿@page
+@model BusLiner.MVC.Areas.Administration.Pages.Rides.AllRidesModel
 
 <main class="tickets-content">
     <div class="tickets-content__title">
-        <div class="tickets-content__title-wrap">
-            <div class="tickets-content__title-subtitle">Квитки на автобус:</div>
-            <div class="tickets-content__title-title">@Model.From - @Model.To</div>
+        <div class="tickets-content__title-create">
+            <button class="tickets-content__title-create-create_ride"><a asp-page="./CreateRide">Створити поїздку</a></button>
         </div>
         <div class="tickets-content__title-sortby-button">
             <button class="tickets-content__title-sortby-button-button">Сортувати по  <i class="fa-solid fa-gears"></i></button>
@@ -46,7 +21,6 @@
         <div class="tickets-content__tickets">
             @foreach (Ride ride in Model.Rides)
             {
-                Console.WriteLine(Model.Rides.Count());
                 var departureTime = Regex.Replace(ride.DepartureTime.ToString("dd MMM, ddd"), @"\.(.)|\b(.)", m => m.Groups[1].Success ? m.Groups[1].Value : m.Groups[2].Value.ToUpper());
                 var arrivalTime = Regex.Replace(ride.ArrivalTime.ToString("dd MMM, ddd"), @"\.(.)|\b(.)", m => m.Groups[1].Success ? m.Groups[1].Value : m.Groups[2].Value.ToUpper());
 
@@ -54,11 +28,13 @@
                     <div class="tickets-content__tickets-ticket-content">
                         <div class="tickets-content__tickets-ticket-places">
                             <div class="tickets-content__tickets-ticket-places-from">
-                                <div class="tickets-content__tickets-ticket-places-from-city">@ride.DeparturePlace.Station</div>
+                                <div class="tickets-content__tickets-ticket-places-from-city">@ride.DeparturePlace.City</div>
+                                <div class="tickets-content__tickets-ticket-places-from-station">@ride.DeparturePlace.Station</div>
                                 <div class="tickets-content__tickets-ticket-places-from-street">@ride.DeparturePlace.Street</div>
                             </div>
                             <div class="tickets-content__tickets-ticket-places-to">
-                                <div class="tickets-content__tickets-ticket-places-to-city">@ride.ArrivalPlace.Station</div>
+                                <div class="tickets-content__tickets-ticket-places-to-city">@ride.ArrivalPlace.City</div>
+                                <div class="tickets-content__tickets-ticket-places-to-station">@ride.ArrivalPlace.Station</div>
                                 <div class="tickets-content__tickets-ticket-places-to-street">@ride.ArrivalPlace.Street</div>
                             </div>
                         </div>
@@ -82,9 +58,15 @@
                     <div class="tickets-content__tickets-ticket-buy">
                         <div class="tickets-content__tickets-ticket-buy-price">@ride.Price.ToString("F2") грн</div>
                         <div class="tickets-content__tickets-ticket-buy-form">
-                            <div class="tickets-content__tickets-ticket-buy-form-button">
-                                <a asp-controller="Order" asp-action="Index" asp-route-rideId="@ride.Id">Купити  <i class="fa-solid fa-cart-shopping"></i></a>
+                            <div class="tickets-content__tickets-ticket-buy-form-button tickets-content__tickets-ticket-buy-form-button-admin">  
+                                <a asp-page="./UpdateRide" asp-route-RideId="@ride.Id">Змінити</a>
                             </div>
+                            <form method="post">
+                                <input type="hidden" name="RideId" value="@ride.Id" />
+                                <button class="tickets-content__tickets-ticket-buy-form-button tickets-content__tickets-ticket-buy-form-button-admin tickets-content__tickets-ticket-buy-form-button-admin-delete" type="submit">
+                                    <a>Видалити</a>
+                                </button>
+                            </form>
                             <div class="tickets-content__tickets-ticket-buy-form-tickets_left">Залишилось квитків: @ride.TicketsAvailable шт.</div>
                         </div>
                     </div>
