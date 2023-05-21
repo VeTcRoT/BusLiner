@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using Microsoft.AspNetCore.Identity;
 using BusLiner.Infrastructure;
+using BusLiner.MVC;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,7 @@ builder.Services.AddDbContext<BusLinerDbContext>(options =>
 });
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<BusLinerDbContext>();
 
 builder.Services.AddAuthentication()
@@ -38,6 +40,8 @@ builder.Services.AddInfrastructureServices();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
+Seed.SeedRoles(builder.Services.BuildServiceProvider());
+
 var app = builder.Build();
 
 app.UseStaticFiles();
@@ -59,3 +63,4 @@ app.UseEndpoints(endpoints =>
 });
 
 app.Run();
+
