@@ -1,8 +1,9 @@
-﻿namespace BusLiner.Application.Features.DeparturePlaces.Queries.GetAllDeparturePlaces
+﻿using MediatR;
+
+namespace BusLiner.Application.Features.ArrivalPlaces.Commands.CreateArrivalPlace
 {
-    public class GetAllDeparturePlacesDto
+    public class CreateArrivalPlaceCommand : IRequest
     {
-        public int Id { get; set; }
         public string City { get; set; } = string.Empty;
         public string Station { get; set; } = string.Empty;
         public string Street { get; set; } = string.Empty;

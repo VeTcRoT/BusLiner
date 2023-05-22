@@ -1,6 +1,8 @@
-﻿namespace BusLiner.Application.Features.DeparturePlaces.Queries.GetAllDeparturePlaces
+﻿using MediatR;
+
+namespace BusLiner.Application.Features.DeparturePlaces.Commands.UpdateDeparturePlace
 {
-    public class GetAllDeparturePlacesDto
+    public class UpdateDeparturePlaceCommand : IRequest
     {
         public int Id { get; set; }
         public string City { get; set; } = string.Empty;

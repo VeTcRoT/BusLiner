@@ -1,7 +1,11 @@
 ﻿using AutoMapper;
+using BusLiner.Application.Features.ArrivalPlaces.Commands.CreateArrivalPlace;
+using BusLiner.Application.Features.ArrivalPlaces.Commands.UpdateArrivalPlace;
 using BusLiner.Application.Features.ArrivalPlaces.Queries.GetAllArrivalPlaces;
 using BusLiner.Application.Features.ArrivalPlaces.Queries.ListAllArrivalPlaces;
 using BusLiner.Application.Features.CustomTrips.Commands.AddCustomTrip;
+using BusLiner.Application.Features.DeparturePlaces.Commands.CreateDeparturePlace;
+using BusLiner.Application.Features.DeparturePlaces.Commands.UpdateDeparturePlace;
 using BusLiner.Application.Features.DeparturePlaces.Queries.GetAllDeparturePlaces;
 using BusLiner.Application.Features.DeparturePlaces.Queries.ListAllDeparturePlaces;
 using BusLiner.Application.Features.Orders.Commands.CreateOrder;
@@ -31,6 +35,12 @@ namespace BusLiner.Application.Profiles
             CreateMap<UpdateRideCommand, Ride>().ReverseMap();
 
             CreateMap<CreateRideCommand, Ride>();
+
+            CreateMap<CreateDeparturePlaceCommand, DeparturePlace>();
+            CreateMap<UpdateDeparturePlaceCommand, DeparturePlace>().ReverseMap();
+
+            CreateMap<CreateArrivalPlaceCommand, ArrivalPlace>();
+            CreateMap<UpdateArrivalPlaceCommand, ArrivalPlace>().ReverseMap();
         }
     }
 }

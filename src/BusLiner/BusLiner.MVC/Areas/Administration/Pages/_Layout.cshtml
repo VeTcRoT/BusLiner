@@ -1,18 +1,75 @@
-﻿@{
-    Layout = "/Views/Shared/_Layout.cshtml";
-}
+﻿@using Microsoft.AspNetCore.Identity
 
-<div class="admin">
-    <div class="admin__nav">
-        <ul class="admin__nav-wrap">
-            <li class="admin__nav-wrap-item"><a asp-page="./AllRides">Поїздки</a></li>
-            <li class="admin__nav-wrap-item"><a href="#">Міста</a></li>
-            <li class="admin__nav-wrap-item"><a href="#">Замовлення</a></li>
-            <li class="admin__nav-wrap-item"><a href="#">Користувачі</a></li>
-            <li class="admin__nav-wrap-item"><a href="#">Заявки на поїздки</a></li>
-        </ul>
-    </div>
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="icon" href="images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/css/styles.css">
+    <title>Головна</title>
+</head>
+<body class="body">
+    <header class="header">
+        <div class="header__wrap">
+            <div class="header__container">
+                <a asp-controller="Home" asp-action="Index" class="header__logo"><img src="~/images/logo.png" alt="logo"></a>
+                <div class="header__menu menu">
+                    <div class="menu__icon">
+                        <span></span>
+                    </div>
+                    <nav class="menu__body">
+                        <ul class="menu__list">
+                            <li><a href="https://localhost:7055/Administration/Rides/AllRides" class="menu__link">Поїздки</a></li>
+                            <li class="menu_submenu-link">
+                                <a href="#" class="menu__link">Міста</a>
+                                <span class="menu__arrow"></span>
+                                <ul class="menu__sub-list">
+                                    <li>
+                                        <a asp-page="AllDeparturePlaces" class="menu__sub-link">Міста посадки</a>
+                                    </li>
+                                    <li>
+                                        <a asp-page="AllArrivalPlaces" class="menu__sub-link">Міста прибуття</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="#" class="menu__link">Замовлення</a></li>
+                            <li><a href="#" class="menu__link">Користувачі</a></li>
+                            <li><a href="#" class="menu__link">Заявки на поїздки</a></li>
+                            <li class="logout-li">
+                                <form id="logoutForm" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                    <input type="submit" id="logout" value="Вийти" />
+                                </form>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="header__image">
+            <img src="~/images/hero-image.jpg" alt="">
+        </div>
+    </header>
     <div class="admin__content">
         @RenderBody()
     </div>
-</div>
+    <footer class="footer">
+        <div class="footer__end" style="border: 0;">
+            <div class="footer__end-text">
+                © 2023 Busliner. Всі права захищені
+            </div>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+    <script src="~/js/main.js"></script>
+</body>
+@RenderSection("scripts", false)
+</html>

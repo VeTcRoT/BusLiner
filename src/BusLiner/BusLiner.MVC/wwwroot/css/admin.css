@@ -1,9 +1,10 @@
-﻿.admin {
+﻿.admin__content {
     max-width: 1100px;
     padding: 0 10px;
     margin: 0 auto;
     width: 100%;
     box-sizing: border-box;
+    margin-bottom: 20px;
 }
 
 .admin__nav-wrap {
@@ -28,3 +29,113 @@
 .admin__nav-wrap-item a:hover {
     background: #696969;
 }
+
+.manage-account__content-option-email_change-wrap-form-input select {
+    font-size: 16px;
+    border-radius: 0;
+    border: 0;
+    width: 100%;
+    outline: none;
+}
+
+.manage-account__content-option-email_change-wrap-form-input select:hover {
+    cursor: pointer;
+}
+
+
+.table-container {
+    overflow-x: auto;
+}
+
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    white-space: nowrap;
+}
+
+.custom-table th, 
+.custom-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.custom-table td:last-child {
+    display: flex;
+    align-items: center;
+}
+
+.custom-table tr:hover {
+    background-color: #f5f5f5;
+}
+
+.form-container {
+    max-width: 400px;
+    margin: 20px auto;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+.save-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.save-btn:hover {
+    opacity: 0.8;
+}
+
+.edit-btn,
+.delete-btn {
+    background-color: #008CBA;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    margin-right: 4px;
+    text-decoration: none;
+}
+
+.delete-btn {
+    background-color: #f44336;
+    font-size: 15px;
+}
+
+.edit-btn:hover,
+.delete-btn:hover {
+    opacity: 0.8;
+}
+
+.table-container-create {
+    margin: 20px 0;
+}
+
+.table-container-create a {
+    display: block;
+    text-align: center;
+    padding: 15px;
+    background: orange;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.3s ease-out;
+}
+
+.table-container-create a:hover {
+    background: rgb(218, 142, 1);
+    cursor: pointer;
+}
+

@@ -1,0 +1,33 @@
+﻿@page
+@model BusLiner.MVC.Areas.Administration.Pages.Places.AllArrivalPlacesModel
+
+<div class="table-container">
+    <div class="table-container-create">
+        <a asp-page="./CreateArrivalPlace">Створити</a>
+    </div>
+    <table class="custom-table custom-table-places">
+        <tr>
+            <th>Id</th>
+            <th>Місто</th>
+            <th>Станція</th>
+            <th>Вулиця</th>
+            <th>Дії</th>
+        </tr>
+        @foreach (GetAllArrivalPlacesDto arrPlace in Model.ArrivalPlaces)
+        {
+            <tr>
+                <td>@arrPlace.Id</td>
+                <td>@arrPlace.City</td>
+                <td>@arrPlace.Station</td>
+                <td>@arrPlace.Street</td>
+                <td>
+                    <a asp-page="./UpdateArrivalPlace" asp-route-Id="@arrPlace.Id" class="edit-btn">Редагувати</a>
+                    <form method="post">
+                        <input type="hidden" name="Id" value="@arrPlace.Id" />
+                        <input type="submit" class="delete-btn" value="Видалити" />
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

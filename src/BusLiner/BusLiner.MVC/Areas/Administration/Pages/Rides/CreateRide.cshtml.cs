@@ -18,12 +18,10 @@ namespace BusLiner.MVC.Areas.Administration.Pages.Rides
         public int DepId { get; set; }
 
         private readonly IMediator _mediator;
-        private readonly IMapper _mapper;
 
-        public CreateRideModel(IMediator mediator, IMapper mapper)
+        public CreateRideModel(IMediator mediator)
         {
             _mediator = mediator;
-            _mapper = mapper;
         }
 
         public async Task<PageResult> OnGetAsync()

@@ -1,0 +1,29 @@
+﻿@page
+@model BusLiner.MVC.Areas.Administration.Pages.Places.UpdateDeparturePlaceModel
+
+<div class="manage-account__content-option-email_change manage-account__content-option-email_change-resend">
+    <div class="manage-account__content-option-email_change-title">Редагування місця відправки</div>
+    <hr />
+    <div class="manage-account__content-option-email_change-wrap manage-account__content-option-email_change-wrap-resend">
+        <form method="post">
+            <input type="hidden" asp-for="DeparturePlace.Id"/>
+            <span asp-validation-for="DeparturePlace.City" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <div class="manage-account__content-option-email_change-wrap-form-input">
+                <label asp-for="DeparturePlace.City" class="form-label">Місто</label>
+                <input asp-for="DeparturePlace.City" class="form-control" aria-required="true" />
+            </div>
+            <span asp-validation-for="DeparturePlace.Station" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <div class="manage-account__content-option-email_change-wrap-form-input">
+                <label asp-for="DeparturePlace.Station" class="form-label">Станція</label>
+                <input asp-for="DeparturePlace.Station" class="form-control" aria-required="true" />
+            </div>
+            <span asp-validation-for="DeparturePlace.Street" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <div class="manage-account__content-option-email_change-wrap-form-input">
+                <label asp-for="DeparturePlace.Street" class="form-label">Вулиця</label>
+                <input asp-for="DeparturePlace.Street" class="form-control" aria-required="true" />
+            </div>
+            <button type="submit" class="manage-account__content-option-email_change-wrap-form-submit">Редагувати</button>
+            <div asp-validation-summary="All" style="margin-top: 20px; text-align: center; max-width: 500px;"></div>
+        </form>
+    </div>
+</div>
