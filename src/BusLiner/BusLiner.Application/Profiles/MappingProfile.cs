@@ -4,6 +4,7 @@ using BusLiner.Application.Features.ArrivalPlaces.Commands.UpdateArrivalPlace;
 using BusLiner.Application.Features.ArrivalPlaces.Queries.GetAllArrivalPlaces;
 using BusLiner.Application.Features.ArrivalPlaces.Queries.ListAllArrivalPlaces;
 using BusLiner.Application.Features.CustomTrips.Commands.AddCustomTrip;
+using BusLiner.Application.Features.CustomTrips.Commands.UpdateCustomTrip;
 using BusLiner.Application.Features.DeparturePlaces.Commands.CreateDeparturePlace;
 using BusLiner.Application.Features.DeparturePlaces.Commands.UpdateDeparturePlace;
 using BusLiner.Application.Features.DeparturePlaces.Queries.GetAllDeparturePlaces;
@@ -30,6 +31,7 @@ namespace BusLiner.Application.Profiles
             CreateMap<Ride, GetUserRidesByEmailDto>();
 
             CreateMap<AddCustomTripCommand, CustomTrip>();
+            CreateMap<UpdateCustomTripCommand, CustomTrip>().ReverseMap();
 
             CreateMap<DeparturePlace, GetAllDeparturePlacesDto>();
             CreateMap<ArrivalPlace, GetAllArrivalPlacesDto>();

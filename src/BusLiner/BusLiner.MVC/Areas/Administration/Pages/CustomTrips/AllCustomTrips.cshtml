@@ -1,0 +1,44 @@
+﻿@page
+@model BusLiner.MVC.Areas.Administration.Pages.CustomTrips.AllCustomTripsModel
+
+<div class="table-container-create">
+    <a asp-page="./CreateCustomTrip">Створити</a>
+</div>
+
+<div class="table-container">
+    <table class="custom-table">
+        <tr>
+            <th>Id</th>
+            <th>Звідки</th>
+            <th>куди</th>
+            <th>Час відправки</th>
+            <th>К-сть пасажирів</th>
+            <th>Ім'я</th>
+            <th>Прізвище</th>
+            <th>Телефон</th>
+            <th>Email</th>
+            <th>Дії</th>
+        </tr>
+        @foreach (CustomTrip trip in Model.CustomTrips)
+        {
+            <tr>
+                <td>@trip.Id</td>
+                <td>@trip.From</td>
+                <td>@trip.To</td>
+                <td>@trip.DepartureTime</td>
+                <td>@trip.AmountOfPassengers</td>
+                <td>@trip.FirstName</td>
+                <td>@trip.LastName</td>
+                <td>@trip.Phone</td>
+                <td>@trip.Email</td>
+               <td>
+                    <a asp-page="./UpdateCustomTrip" asp-route-Id="@trip.Id" class="edit-btn">Редагувати</a>
+                    <form method="post">
+                        <input type="hidden" name="Id" value="@trip.Id" />
+                        <input type="submit" class="delete-btn" value="Видалити" />
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

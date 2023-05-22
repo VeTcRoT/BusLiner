@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using BusLiner.Application.Exceptions;
 using BusLiner.Domain.Interfaces.Repositories;
 using MediatR;
 using BusLiner.Domain.Entities;
