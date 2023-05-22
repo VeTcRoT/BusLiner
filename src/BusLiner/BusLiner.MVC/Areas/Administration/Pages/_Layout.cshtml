@@ -28,20 +28,20 @@
                     </div>
                     <nav class="menu__body">
                         <ul class="menu__list">
-                            <li><a href="https://localhost:7055/Administration/Rides/AllRides" class="menu__link">Поїздки</a></li>
+                            <li><a asp-page="../Rides/AllRides" class="menu__link">Поїздки</a></li>
                             <li class="menu_submenu-link">
                                 <a href="#" class="menu__link">Міста</a>
                                 <span class="menu__arrow"></span>
                                 <ul class="menu__sub-list">
                                     <li>
-                                        <a asp-page="AllDeparturePlaces" class="menu__sub-link">Міста посадки</a>
+                                        <a asp-page="../Places/AllDeparturePlaces" class="menu__sub-link">Міста посадки</a>
                                     </li>
                                     <li>
-                                        <a asp-page="AllArrivalPlaces" class="menu__sub-link">Міста прибуття</a>
+                                        <a asp-page="../Places/AllArrivalPlaces" class="menu__sub-link">Міста прибуття</a>
                                     </li>
                                 </ul>
                             </li>
-                            <li><a href="#" class="menu__link">Замовлення</a></li>
+                            <li><a asp-page="../Orders/AllOrders" class="menu__link">Замовлення</a></li>
                             <li><a href="#" class="menu__link">Користувачі</a></li>
                             <li><a href="#" class="menu__link">Заявки на поїздки</a></li>
                             <li class="logout-li">

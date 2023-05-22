@@ -9,6 +9,7 @@ using BusLiner.Application.Features.DeparturePlaces.Commands.UpdateDeparturePlac
 using BusLiner.Application.Features.DeparturePlaces.Queries.GetAllDeparturePlaces;
 using BusLiner.Application.Features.DeparturePlaces.Queries.ListAllDeparturePlaces;
 using BusLiner.Application.Features.Orders.Commands.CreateOrder;
+using BusLiner.Application.Features.Orders.Commands.UpdateOrder;
 using BusLiner.Application.Features.Orders.Queries.GetUserRidesByEmail;
 using BusLiner.Application.Features.Rides.Commands.CreateRide;
 using BusLiner.Application.Features.Rides.Commands.UpdateRide;
@@ -24,6 +25,7 @@ namespace BusLiner.Application.Profiles
             CreateMap<ArrivalPlace, ListAllArrivalPlacesDto>();
 
             CreateMap<CreateOrderQuery, Order>();
+            CreateMap<UpdateOrderCommand, Order>().ReverseMap();
 
             CreateMap<Ride, GetUserRidesByEmailDto>();
 
@@ -41,6 +43,7 @@ namespace BusLiner.Application.Profiles
 
             CreateMap<CreateArrivalPlaceCommand, ArrivalPlace>();
             CreateMap<UpdateArrivalPlaceCommand, ArrivalPlace>().ReverseMap();
+
         }
     }
 }

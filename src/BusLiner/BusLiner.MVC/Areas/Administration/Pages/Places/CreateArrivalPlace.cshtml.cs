@@ -8,7 +8,7 @@ namespace BusLiner.MVC.Areas.Administration.Pages.Places
     public class CreateArrivalPlaceModel : PageModel
     {
         [BindProperty]
-        public CreateArrivalPlaceCommand ArrivalPlace { get; set; }
+        public CreateArrivalPlaceCommand ArrivalPlace { get; set; } = null!;
 
         private readonly IMediator _mediator;
 
@@ -17,7 +17,7 @@ namespace BusLiner.MVC.Areas.Administration.Pages.Places
             _mediator = mediator;
         }
 
-        public async Task<IActionResult> OnGetAsync()
+        public IActionResult OnGet()
         {
             return Page();
         }

@@ -1,3 +1,46 @@
 ﻿@page
 @model BusLiner.MVC.Areas.Administration.Pages.Orders.AllOrdersModel
 
+<div class="table-container-create">
+    <a asp-page="./CreateOrder">Створити</a>
+</div>
+
+<div class="table-container">
+    <table class="custom-table">
+        <tr>
+            <th>Id</th>
+            <th>Ім'я</th>
+            <th>Прізвище</th>
+            <th>Email</th>
+            <th>Телефон</th>
+            <th>Замолено квитків</th>
+            <th>Додатковий багаж</th>
+            <th>Загальна сумма</th>
+            <th>Номер квитка</th>
+            <th>Id поїздки</th>
+            <th>Дії</th>
+        </tr>
+        @foreach (Order order in Model.Orders)
+        {
+            <tr>
+                <td>@order.Id</td>
+                <td>@order.FirstName</td>
+                <td>@order.LastName</td>
+                <td>@order.Email</td>
+                <td>@order.Phone</td>
+                <td>@order.TicketsOrdered шт.</td>
+                <td>@order.AdditionalBaggage шт.</td>
+                <td>@order.Total грн.</td>
+                <td>@order.TicketCode</td>
+                <td>@order.RideId</td>
+                <td>
+                    <a asp-page="./UpdateOrder" asp-route-Id="@order.Id" class="edit-btn">Редагувати</a>
+                    <form method="post">
+                        <input type="hidden" name="Id" value="@order.Id" />
+                        <input type="submit" class="delete-btn" value="Видалити" />
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

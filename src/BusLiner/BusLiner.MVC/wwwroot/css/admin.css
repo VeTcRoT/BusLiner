@@ -132,6 +132,9 @@
     font-weight: bold;
     text-decoration: none;
     transition: background 0.3s ease-out;
+    max-width: 1100px;
+    box-sizing: border-box;
+    margin: 0 auto;
 }
 
 .table-container-create a:hover {
