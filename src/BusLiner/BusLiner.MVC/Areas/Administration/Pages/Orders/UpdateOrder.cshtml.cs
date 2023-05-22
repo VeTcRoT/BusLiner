@@ -11,7 +11,7 @@ namespace BusLiner.MVC.Areas.Administration.Pages.Orders
     public class UpdateOrderModel : PageModel
     {
         [BindProperty]
-        public Order Order { get; set; }
+        public Order Order { get; set; } = null!;
 
         private readonly IMediator _mediator;
         private readonly IMapper _mapper;

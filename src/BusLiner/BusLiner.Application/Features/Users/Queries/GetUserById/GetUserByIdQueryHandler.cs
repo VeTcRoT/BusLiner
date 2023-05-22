@@ -23,10 +23,8 @@ namespace BusLiner.Application.Features.Users.Queries.GetUserById
             if (user == null)
                 throw new NotFoundException(nameof(IdentityUser), request.Id);
 
-            string rolename = (await _userManager.GetRolesAsync(user)).FirstOrDefault();
-
             var userDto = _mapper.Map<GetUserByIdDto>(user);
-            userDto.Role = rolename;
+            userDto.Role = (await _userManager.GetRolesAsync(user)).FirstOrDefault();
 
             return userDto;
         }

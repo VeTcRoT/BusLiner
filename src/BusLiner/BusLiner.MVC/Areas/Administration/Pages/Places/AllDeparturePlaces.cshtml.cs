@@ -10,7 +10,7 @@ namespace BusLiner.MVC.Areas.Administration.Pages.Places
     {
         [BindProperty]
         public int Id { get; set; }
-        public IEnumerable<GetAllDeparturePlacesDto> DeparturePlaces { get; set; }
+        public IEnumerable<GetAllDeparturePlacesDto> DeparturePlaces { get; set; } = null!;
 
         private readonly IMediator _mediator;
 
@@ -30,7 +30,7 @@ namespace BusLiner.MVC.Areas.Administration.Pages.Places
         {
             await _mediator.Send(new DeleteDeparturePlaceCommand() { Id = Id });
 
-            return Page();
+            return RedirectToPage("AllDeparturePlaces");
         }
     }
 }

@@ -16,8 +16,8 @@
             <div class="manage-account__content-option-email_change-wrap-form-input">
                 <label asp-for="UserCommand.EmailConfirmed" class="form-label">Підтверджений email</label>
                 <select asp-for="UserCommand.EmailConfirmed">
-                    <option value="0">Ні</option>
-                    <option value="1">Так</option>
+                    <option value="false">Ні</option>
+                    <option value="true">Так</option>
                 </select>
             </div>
             <span asp-validation-for="UserCommand.Role" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>

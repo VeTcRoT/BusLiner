@@ -11,7 +11,7 @@ namespace BusLiner.MVC.Areas.Administration.Pages.Places
     public class UpdateDeparturePlaceModel : PageModel
     {
         [BindProperty]
-        public DeparturePlace DeparturePlace { get; set; }
+        public DeparturePlace DeparturePlace { get; set; } = null!;
 
         private readonly IMediator _mediator;
         private readonly IMapper _mapper;

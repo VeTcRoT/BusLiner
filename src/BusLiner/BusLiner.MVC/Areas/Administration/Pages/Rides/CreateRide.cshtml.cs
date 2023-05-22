@@ -11,9 +11,9 @@ namespace BusLiner.MVC.Areas.Administration.Pages.Rides
     public class CreateRideModel : PageModel
     {
         [BindProperty]
-        public CreateRideCommand Ride { get; set; }
-        public IEnumerable<GetAllDeparturePlacesDto> DeparturePlaces { get; set; }
-        public IEnumerable<GetAllArrivalPlacesDto> ArrivalPlaces { get; set; }
+        public CreateRideCommand Ride { get; set; } = null!;
+        public IEnumerable<GetAllDeparturePlacesDto> DeparturePlaces { get; set; } = null!;
+        public IEnumerable<GetAllArrivalPlacesDto> ArrivalPlaces { get; set; } = null!;
 
         public int DepId { get; set; }
 

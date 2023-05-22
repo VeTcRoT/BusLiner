@@ -11,7 +11,7 @@ namespace BusLiner.MVC.Areas.Administration.Pages.Places
     {
         [BindProperty]
         public int Id { get; set; }
-        public IEnumerable<GetAllArrivalPlacesDto> ArrivalPlaces { get; set; }
+        public IEnumerable<GetAllArrivalPlacesDto> ArrivalPlaces { get; set; } = null!;
 
         private readonly IMediator _mediator;
 
