@@ -30,9 +30,25 @@ builder.Services.AddAuthentication()
         googleOptions.ClientId = builder.Configuration["Authentication:Google:ClientId"];
         googleOptions.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
     });
-    
 
-builder.Services.AddRazorPages();
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("ElevatedRights", policy =>
+          policy.RequireRole("Admin", "Manager"));
+
+    options.AddPolicy("AdminRole", policy =>
+          policy.RequireRole("Admin"));
+});
+
+
+builder.Services.AddRazorPages(options =>
+{
+    options.Conventions.AuthorizeAreaFolder("Administration", "/Rides", "ElevatedRights");
+    options.Conventions.AuthorizeAreaFolder("Administration", "/CustomTrips", "ElevatedRights");
+    options.Conventions.AuthorizeAreaFolder("Administration", "/Orders", "ElevatedRights");
+    options.Conventions.AuthorizeAreaFolder("Administration", "/Places", "ElevatedRights");
+    options.Conventions.AuthorizeAreaFolder("Administration", "/Users", "AdminRole");
+});
 
 builder.Services.AddApplicationServices();
 builder.Services.AddPersistenceServices();

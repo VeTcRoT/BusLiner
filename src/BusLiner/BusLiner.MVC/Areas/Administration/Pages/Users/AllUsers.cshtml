@@ -1,0 +1,33 @@
+﻿@page
+@model BusLiner.MVC.Areas.Administration.Pages.Users.AllUsersModel
+
+<div class="table-container">
+    <div class="table-container-create">
+        <a asp-page="./CreateUser">Створити</a>
+    </div>
+    <table class="custom-table custom-table-places">
+        <tr>
+            <th>Id</th>
+            <th>Email</th>
+            <th>Підтверджений email</th>
+            <th>Роль</th>
+            <th>Дії</th>
+        </tr>
+        @foreach (GetAllUsersDto user in Model.Users)
+        {
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.Email</td>
+                <td>@(user.EmailConfirmed ? "Так" : "Ні")</td>
+                <td>@user.Role</td>
+                <td>
+                    <a asp-page="./UpdateUser" asp-route-Id="@user.Id" class="edit-btn">Редагувати</a>
+                    <form method="post">
+                        <input type="hidden" name="Id" value="@user.Id" />
+                        <input type="submit" class="delete-btn" value="Видалити" />
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

@@ -14,7 +14,12 @@ using BusLiner.Application.Features.Orders.Commands.UpdateOrder;
 using BusLiner.Application.Features.Orders.Queries.GetUserRidesByEmail;
 using BusLiner.Application.Features.Rides.Commands.CreateRide;
 using BusLiner.Application.Features.Rides.Commands.UpdateRide;
+using BusLiner.Application.Features.Roles.Queries.GetAllRoles;
+using BusLiner.Application.Features.Users.Commands.UpdateUser;
+using BusLiner.Application.Features.Users.Queries.GetAllUsers;
+using BusLiner.Application.Features.Users.Queries.GetUserById;
 using BusLiner.Domain.Entities;
+using Microsoft.AspNetCore.Identity;
 
 namespace BusLiner.Application.Profiles
 {
@@ -46,6 +51,13 @@ namespace BusLiner.Application.Profiles
             CreateMap<CreateArrivalPlaceCommand, ArrivalPlace>();
             CreateMap<UpdateArrivalPlaceCommand, ArrivalPlace>().ReverseMap();
 
+            CreateMap<IdentityUser, GetUserByIdDto>();
+
+            CreateMap<IdentityUser, GetAllUsersDto>();
+
+            CreateMap<IdentityRole, GetAllRolesDto>();
+
+            CreateMap<GetUserByIdDto, UpdateUserCommand>();
         }
     }
 }

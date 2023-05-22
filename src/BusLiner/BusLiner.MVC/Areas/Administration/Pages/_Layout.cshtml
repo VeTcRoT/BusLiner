@@ -1,9 +1,4 @@
-﻿@using Microsoft.AspNetCore.Identity
-
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -42,8 +37,11 @@
                                 </ul>
                             </li>
                             <li><a asp-page="../Orders/AllOrders" class="menu__link">Замовлення</a></li>
-                            <li><a href="#" class="menu__link">Користувачі</a></li>
                             <li><a asp-page="../CustomTrips/AllCustomTrips" class="menu__link">Заявки на поїздки</a></li>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li><a asp-page="../Users/AllUsers" class="menu__link">Користувачі</a></li>
+                            }
                             <li class="logout-li">
                                 <form id="logoutForm" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                                     <input type="submit" id="logout" value="Вийти" />

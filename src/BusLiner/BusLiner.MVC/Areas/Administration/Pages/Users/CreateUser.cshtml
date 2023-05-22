@@ -1,0 +1,41 @@
+﻿@page
+@model BusLiner.MVC.Areas.Administration.Pages.Users.CreateUserModel
+
+<div class="manage-account__content-option-email_change manage-account__content-option-email_change-resend">
+    <div class="manage-account__content-option-email_change-title">Створення користувача</div>
+    <hr />
+    <div class="manage-account__content-option-email_change-wrap manage-account__content-option-email_change-wrap-resend">
+        <form method="post">
+            <span asp-validation-for="UserCommand.Email" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <div class="manage-account__content-option-email_change-wrap-form-input">
+                <label asp-for="UserCommand.Email" class="form-label">Email</label>
+                <input asp-for="UserCommand.Email" class="form-control" aria-required="true" />
+            </div>
+            <span asp-validation-for="UserCommand.Password" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <div class="manage-account__content-option-email_change-wrap-form-input">
+                <label asp-for="UserCommand.Password" class="form-label">Пароль</label>
+                <input asp-for="UserCommand.Password" class="form-control" aria-required="true" />
+            </div>
+            <span asp-validation-for="UserCommand.EmailConfirmed" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <div class="manage-account__content-option-email_change-wrap-form-input">
+                <label asp-for="UserCommand.EmailConfirmed" class="form-label">Підтвердити email</label>
+                <select asp-for="UserCommand.EmailConfirmed">
+                    <option value="0">Ні</option>
+                    <option value="1">Так</option>
+                </select>
+            </div>
+            <span asp-validation-for="UserCommand.Role" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <div class="manage-account__content-option-email_change-wrap-form-input">
+                <label asp-for="UserCommand.Role" class="form-label">Роль</label>
+                <select asp-for="UserCommand.Role">
+                    @foreach (GetAllRolesDto role in Model.Roles)
+                    {
+                        <option value="@role.Name">@role.Name</option>
+                    }
+                </select>
+            </div>
+            <button type="submit" class="manage-account__content-option-email_change-wrap-form-submit">Створити</button>
+            <div asp-validation-summary="All" style="margin-top: 20px; text-align: center; max-width: 500px;"></div>
+        </form>
+    </div>
+</div>

@@ -45,9 +45,18 @@
                             </li>*@
                             @if (SignInManager.IsSignedIn(User))
                             {
-                                <li>
-                                    <a id="manage" class="menu__link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Кабінет</a>
-                                </li>
+                                if(User.IsInRole("Admin") || User.IsInRole("Manager"))
+                                {
+                                    <li>
+                                        <a id="manage" class="menu__link" asp-area="Administration" asp-page="/Rides/AllRides" title="Manage">Панель</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <a id="manage" class="menu__link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Кабінет</a>
+                                    </li>
+                                }
                                 <li class="logout-li">
                                     <form id="logoutForm" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                                         <input type="submit" id="logout" value="Вийти" />
