@@ -24,7 +24,10 @@ namespace BusLiner.MVC.Areas.Administration.Pages.Places
 
         public async Task<IActionResult> OnGetAsync()
         {
-            var depPlaceId = Convert.ToInt32(Request.Query["Id"]);
+            int depPlaceId;
+
+            if (!int.TryParse(Request.Query["Id"], out depPlaceId))
+                return RedirectToPage("AllDeparturePlaces");
 
             DeparturePlace = await _mediator.Send(new GetDeparturePlaceByIdQuery() { Id = depPlaceId });
 

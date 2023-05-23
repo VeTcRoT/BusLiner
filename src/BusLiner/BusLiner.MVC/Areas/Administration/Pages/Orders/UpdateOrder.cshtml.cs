@@ -24,7 +24,10 @@ namespace BusLiner.MVC.Areas.Administration.Pages.Orders
 
         public async Task<IActionResult> OnGetAsync()
         {
-            var orderId = Convert.ToInt32(Request.Query["Id"]);
+            int orderId;
+
+            if (!int.TryParse(Request.Query["Id"], out orderId))
+                return RedirectToPage("AllOrders");
 
             Order = await _mediator.Send( new GetOrderByIdQuery() { Id = orderId } );
 

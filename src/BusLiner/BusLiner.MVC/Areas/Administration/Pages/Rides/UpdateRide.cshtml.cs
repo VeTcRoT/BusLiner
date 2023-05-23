@@ -28,9 +28,12 @@ namespace BusLiner.MVC.Areas.Administration.Pages.Rides
             _mapper = mapper;
         }
 
-        public async Task<PageResult> OnGetAsync()
+        public async Task<IActionResult> OnGetAsync()
         {
-            var rideId = Convert.ToInt32(Request.Query["RideId"]);
+            int rideId;
+
+            if (!int.TryParse(Request.Query["RideId"], out rideId))
+                return RedirectToPage("AllRides");
 
             Ride = await _mediator.Send(new GetRideByIdQuery() { Id = rideId });
             DeparturePlaces = await _mediator.Send(new GetAllDeparturePlacesQuery());

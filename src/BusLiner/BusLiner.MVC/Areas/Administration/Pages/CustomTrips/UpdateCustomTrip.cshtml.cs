@@ -24,7 +24,10 @@ namespace BusLiner.MVC.Areas.Administration.Pages.CustomTrips
 
         public async Task<IActionResult> OnGetAsync()
         {
-            var tripId = Convert.ToInt32(Request.Query["Id"]);
+            int tripId;
+
+            if (!int.TryParse(Request.Query["Id"], out tripId))
+                return RedirectToPage("AllCustomTrips");
 
             CustomTrip = await _mediator.Send( new GetCustomTripByIdQuery() { Id = tripId } );
 

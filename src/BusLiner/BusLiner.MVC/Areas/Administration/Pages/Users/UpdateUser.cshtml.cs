@@ -25,7 +25,10 @@ namespace BusLiner.MVC.Areas.Administration.Pages.Users
 
         public async Task<IActionResult> OnGetAsync()
         {
-            var userId = Request.Query["Id"];
+            string? userId = Request.Query["Id"];
+
+            if (!Guid.TryParse(userId, out Guid a))
+                return RedirectToPage("AllUsers");
 
             UserCommand = await _mediator.Send( new GetUserByIdQuery() { Id = userId } );
             Roles = await _mediator.Send( new GetAllRolesQuery() );
