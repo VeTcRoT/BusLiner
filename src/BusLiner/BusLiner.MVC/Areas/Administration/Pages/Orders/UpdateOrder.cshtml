@@ -4,51 +4,55 @@
 <div class="manage-account__content-option-email_change manage-account__content-option-email_change-resend">
     <div class="manage-account__content-option-email_change-title">Редагування замовлення</div>
     <hr />
-    <div class="manage-account__content-option-email_change-wrap manage-account__content-option-email_change-wrap-resend">
+    <div class="manage-account__content-option-email_change-wrap manage-account__content-option-email_change-wrap-resend manage-account__content-admin">
         <form method="post">
             <input type="hidden" asp-for="Order.Id"/>
-            <span asp-validation-for="Order.FirstName" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
             <div class="manage-account__content-option-email_change-wrap-form-input">
                 <label asp-for="Order.FirstName" class="form-label">Ім'я</label>
                 <input asp-for="Order.FirstName" class="form-control" aria-required="true" />
             </div>
-            <span asp-validation-for="Order.LastName" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <span asp-validation-for="Order.FirstName" class="text-danger admin-validation"></span>
             <div class="manage-account__content-option-email_change-wrap-form-input">
                 <label asp-for="Order.LastName" class="form-label">Прізвище</label>
                 <input asp-for="Order.LastName" class="form-control" aria-required="true" />
             </div>
-            <span asp-validation-for="Order.Email" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <span asp-validation-for="Order.LastName" class="text-danger admin-validation"></span>
             <div class="manage-account__content-option-email_change-wrap-form-input">
                 <label asp-for="Order.Email" class="form-label">Email</label>
                 <input asp-for="Order.Email" class="form-control" aria-required="true" />
             </div>
-            <span asp-validation-for="Order.Phone" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <span asp-validation-for="Order.Email" class="text-danger admin-validation"></span>
             <div class="manage-account__content-option-email_change-wrap-form-input">
                 <label asp-for="Order.Phone" class="form-label">Телефон</label>
                 <input asp-for="Order.Phone" class="form-control" aria-required="true" />
             </div>
-            <span asp-validation-for="Order.TicketsOrdered" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <span asp-validation-for="Order.Phone" class="text-danger admin-validation"></span>
             <div class="manage-account__content-option-email_change-wrap-form-input">
                 <label asp-for="Order.TicketsOrdered" class="form-label">Замовлено квитків</label>
                 <input asp-for="Order.TicketsOrdered" class="form-control" aria-required="true" />
             </div>
-            <span asp-validation-for="Order.AdditionalBaggage" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <span asp-validation-for="Order.TicketsOrdered" class="text-danger admin-validation"></span>
             <div class="manage-account__content-option-email_change-wrap-form-input">
                 <label asp-for="Order.AdditionalBaggage" class="form-label">Додатковий багаж</label>
                 <input asp-for="Order.AdditionalBaggage" class="form-control" aria-required="true" />
             </div>
-            <span asp-validation-for="Order.Total" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <span asp-validation-for="Order.AdditionalBaggage" class="text-danger admin-validation"></span>
             <div class="manage-account__content-option-email_change-wrap-form-input">
                 <label asp-for="Order.Total" class="form-label">Загальна сумма</label>
                 <input asp-for="Order.Total" class="form-control" aria-required="true" />
             </div>
-            <span asp-validation-for="Order.RideId" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <span asp-validation-for="Order.Total" class="text-danger admin-validation"></span>
             <div class="manage-account__content-option-email_change-wrap-form-input">
                 <label asp-for="Order.RideId" class="form-label">Id поїздки</label>
                 <input asp-for="Order.RideId" class="form-control" aria-required="true" />
             </div>
-            <button type="submit" class="manage-account__content-option-email_change-wrap-form-submit">Створити</button>
-            <div asp-validation-summary="All" style="margin-top: 20px; text-align: center; max-width: 500px;"></div>
+            <span asp-validation-for="Order.RideId" class="text-danger admin-validation"></span>
+            <div class="manage-account__content-option-email_change-wrap-form-input">
+                <label asp-for="Order.Total" class="form-label">Сумма</label>
+                <input asp-for="Order.Total" class="form-control" aria-required="true" />
+            </div>
+            <span asp-validation-for="Order.Total" class="text-danger admin-validation"></span>
+            <button type="submit" class="manage-account__content-option-email_change-wrap-form-submit">Редагувати</button>
         </form>
     </div>
 </div>

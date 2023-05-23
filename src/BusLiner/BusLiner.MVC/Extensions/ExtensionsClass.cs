@@ -12,5 +12,13 @@ namespace BusLiner.MVC.Extensions
                 modelState.AddModelError(error.PropertyName, error.ErrorMessage);
             }
         }
+
+        public static void AddToModelStateWithObjectName(this ValidationResult result, ModelStateDictionary modelState, string obj)
+        {
+            foreach (var error in result.Errors)
+            {
+                modelState.AddModelError(obj + "." + error.PropertyName, error.ErrorMessage);
+            }
+        }
     }
 }

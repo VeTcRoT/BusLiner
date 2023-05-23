@@ -1,10 +1,10 @@
 ﻿using FluentValidation;
 
-namespace BusLiner.Application.Features.CustomTrips.Commands.AddCustomTrip
+namespace BusLiner.Application.Features.CustomTrips.Commands.UpdateCustomTrip
 {
-    public class AddCustomTripCommandValidator : AbstractValidator<AddCustomTripCommand>
+    public class UpdateCustomTripCommandValidator : AbstractValidator<UpdateCustomTripCommand>
     {
-        public AddCustomTripCommandValidator()
+        public UpdateCustomTripCommandValidator()
         {
             RuleFor(c => c.From)
                 .NotEmpty().WithMessage("Звідки є необхідним.")

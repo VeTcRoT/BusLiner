@@ -4,50 +4,49 @@
 <div class="manage-account__content-option-email_change manage-account__content-option-email_change-resend">
     <div class="manage-account__content-option-email_change-title">Створення замовлення на поїздку</div>
     <hr />
-    <div class="manage-account__content-option-email_change-wrap manage-account__content-option-email_change-wrap-resend">
+    <div class="manage-account__content-option-email_change-wrap manage-account__content-option-email_change-wrap-resend manage-account__content-admin">
         <form method="post">
-            <span asp-validation-for="CustomTrip.From" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
             <div class="manage-account__content-option-email_change-wrap-form-input">
                 <label asp-for="CustomTrip.From" class="form-label">Звідки</label>
                 <input asp-for="CustomTrip.From" class="form-control" aria-required="true" />
             </div>
-            <span asp-validation-for="CustomTrip.To" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <span asp-validation-for="CustomTrip.From" class="text-danger admin-validation"></span>
             <div class="manage-account__content-option-email_change-wrap-form-input">
                 <label asp-for="CustomTrip.To" class="form-label">Куди</label>
                 <input asp-for="CustomTrip.To" class="form-control" aria-required="true" />
             </div>
-            <span asp-validation-for="CustomTrip.DepartureTime" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <span asp-validation-for="CustomTrip.To" class="text-danger admin-validation"></span>
             <div class="manage-account__content-option-email_change-wrap-form-input">
                 <label asp-for="CustomTrip.DepartureTime" class="form-label">Дата відправлення</label>
                 <input asp-for="CustomTrip.DepartureTime" class="form-control" aria-required="true" />
             </div>
-            <span asp-validation-for="CustomTrip.AmountOfPassengers" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <span asp-validation-for="CustomTrip.DepartureTime" class="text-danger admin-validation"></span>
             <div class="manage-account__content-option-email_change-wrap-form-input">
                 <label asp-for="CustomTrip.AmountOfPassengers" class="form-label">К-сть пасажирів</label>
                 <input asp-for="CustomTrip.AmountOfPassengers" class="form-control" aria-required="true" />
             </div>
-            <span asp-validation-for="CustomTrip.FirstName" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <span asp-validation-for="CustomTrip.AmountOfPassengers" class="text-danger admin-validation"></span>
             <div class="manage-account__content-option-email_change-wrap-form-input">
                 <label asp-for="CustomTrip.FirstName" class="form-label">Ім'я'</label>
                 <input asp-for="CustomTrip.FirstName" class="form-control" aria-required="true" />
             </div>
-            <span asp-validation-for="CustomTrip.LastName" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <span asp-validation-for="CustomTrip.FirstName" class="text-danger admin-validation"></span>
             <div class="manage-account__content-option-email_change-wrap-form-input">
                 <label asp-for="CustomTrip.LastName" class="form-label">Прізвище</label>
                 <input asp-for="CustomTrip.LastName" class="form-control" aria-required="true" />
             </div>
-            <span asp-validation-for="CustomTrip.Phone" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <span asp-validation-for="CustomTrip.LastName" class="text-danger admin-validation"></span>
             <div class="manage-account__content-option-email_change-wrap-form-input">
                 <label asp-for="CustomTrip.Phone" class="form-label">Телефон</label>
                 <input asp-for="CustomTrip.Phone" class="form-control" aria-required="true" />
             </div>
-            <span asp-validation-for="CustomTrip.Email" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <span asp-validation-for="CustomTrip.Phone" class="text-danger admin-validation"></span>
             <div class="manage-account__content-option-email_change-wrap-form-input">
                 <label asp-for="CustomTrip.Email" class="form-label">Email</label>
                 <input asp-for="CustomTrip.Email" class="form-control" aria-required="true" />
             </div>
+            <span asp-validation-for="CustomTrip.Email" class="text-danger admin-validation"></span>
             <button type="submit" class="manage-account__content-option-email_change-wrap-form-submit">Створити</button>
-            <div asp-validation-summary="All" style="margin-top: 20px; text-align: center; max-width: 500px;"></div>
         </form>
     </div>
 </div>

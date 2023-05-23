@@ -4,9 +4,8 @@
 <div class="manage-account__content-option-email_change manage-account__content-option-email_change-resend">
     <div class="manage-account__content-option-email_change-title">Створення поїздки</div>
     <hr />
-    <div class="manage-account__content-option-email_change-wrap manage-account__content-option-email_change-wrap-resend">
+    <div class="manage-account__content-option-email_change-wrap manage-account__content-option-email_change-wrap-resend manage-account__content-admin">
         <form method="post">
-            <span asp-validation-for="Ride.DeparturePlaceId" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
             <div class="manage-account__content-option-email_change-wrap-form-input">
                 <label asp-for="Ride.DeparturePlaceId" class="form-label">Звідки</label>
                 <select asp-for="Ride.DeparturePlaceId">
@@ -16,7 +15,7 @@
                     }
                 </select>
             </div>
-            <span asp-validation-for="Ride.ArrivalPlaceId" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <span asp-validation-for="Ride.DeparturePlaceId" class="text-danger admin-validation"></span>
             <div class="manage-account__content-option-email_change-wrap-form-input">
                 <label asp-for="Ride.ArrivalPlaceId" class="form-label">Куди</label>
                 <select asp-for="Ride.ArrivalPlaceId">
@@ -26,28 +25,28 @@
                     }
                 </select>
             </div>
-            <span asp-validation-for="Ride.DepartureTime" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <span asp-validation-for="Ride.ArrivalPlaceId" class="text-danger admin-validation"></span>
             <div class="manage-account__content-option-email_change-wrap-form-input">
                 <label asp-for="Ride.DepartureTime" class="form-label">Час відправки</label>
                 <input asp-for="Ride.DepartureTime" class="form-control" aria-required="true" />
             </div>
-            <span asp-validation-for="Ride.ArrivalTime" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <span asp-validation-for="Ride.DepartureTime" class="text-danger admin-validation"></span>
             <div class="manage-account__content-option-email_change-wrap-form-input">
                 <label asp-for="Ride.ArrivalTime" class="form-label">Час прибуття</label>
                 <input asp-for="Ride.ArrivalTime" class="form-control" aria-required="true" />
             </div>
-            <span asp-validation-for="Ride.TicketsAvailable" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <span asp-validation-for="Ride.ArrivalTime" class="text-danger admin-validation"></span>
             <div class="manage-account__content-option-email_change-wrap-form-input">
                 <label asp-for="Ride.TicketsAvailable" class="form-label">Доступно квитків</label>
                 <input asp-for="Ride.TicketsAvailable" class="form-control" aria-required="true" />
             </div>
-            <span asp-validation-for="Ride.Price" class="text-danger" style="text-align: center; display: block; margin-bottom: 20px;"></span>
+            <span asp-validation-for="Ride.TicketsAvailable" class="text-danger admin-validation"></span>
             <div class="manage-account__content-option-email_change-wrap-form-input">
                 <label asp-for="Ride.Price" class="form-label">Ціна</label>
                 <input asp-for="Ride.Price" class="form-control" aria-required="true" />
             </div>
+            <span asp-validation-for="Ride.Price" class="text-danger admin-validation"></span>
             <button type="submit" class="manage-account__content-option-email_change-wrap-form-submit">Створити</button>
-            <div asp-validation-summary="All" style="margin-top: 20px; text-align: center; max-width: 500px;"></div>
         </form>
     </div>
 </div>

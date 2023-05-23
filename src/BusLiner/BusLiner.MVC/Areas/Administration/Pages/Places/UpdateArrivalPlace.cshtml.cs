@@ -1,8 +1,9 @@
 using AutoMapper;
 using BusLiner.Application.Features.ArrivalPlaces.Commands.UpdateArrivalPlace;
 using BusLiner.Application.Features.ArrivalPlaces.Queries.GetArrivalPlaceById;
-using BusLiner.Application.Features.DeparturePlaces.Commands.UpdateDeparturePlace;
 using BusLiner.Domain.Entities;
+using BusLiner.MVC.Extensions;
+using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -16,11 +17,13 @@ namespace BusLiner.MVC.Areas.Administration.Pages.Places
 
         private readonly IMediator _mediator;
         private readonly IMapper _mapper;
+        private readonly IValidator<UpdateArrivalPlaceCommand> _validator;
 
-        public UpdateArrivalPlaceModel(IMediator mediator, IMapper mapper)
+        public UpdateArrivalPlaceModel(IMediator mediator, IMapper mapper, IValidator<UpdateArrivalPlaceCommand> validator)
         {
             _mediator = mediator;
             _mapper = mapper;
+            _validator = validator;
         }
 
         public async Task<IActionResult> OnGetAsync()
@@ -38,6 +41,14 @@ namespace BusLiner.MVC.Areas.Administration.Pages.Places
         public async Task<IActionResult> OnPostAsync()
         {
             var mapped = _mapper.Map<UpdateArrivalPlaceCommand>(ArrivalPlace);
+
+            var validationResult = await _validator.ValidateAsync(mapped);
+
+            if (!validationResult.IsValid)
+            {
+                validationResult.AddToModelStateWithObjectName(ModelState, "ArrivalPlace");
+                return Page();
+            }
 
             await _mediator.Send(mapped);
 

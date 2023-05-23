@@ -4,6 +4,8 @@ using BusLiner.Application.Features.DeparturePlaces.Queries.GetAllDeparturePlace
 using BusLiner.Application.Features.Rides.Commands.UpdateRide;
 using BusLiner.Application.Features.Rides.Queries.GetRideById;
 using BusLiner.Domain.Entities;
+using BusLiner.MVC.Extensions;
+using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -21,11 +23,13 @@ namespace BusLiner.MVC.Areas.Administration.Pages.Rides
 
         private readonly IMediator _mediator;
         private readonly IMapper _mapper;
+        private readonly IValidator<UpdateRideCommand> _validator;
 
-        public UpdateRideModel(IMediator mediator, IMapper mapper)
+        public UpdateRideModel(IMediator mediator, IMapper mapper, IValidator<UpdateRideCommand> validator)
         {
             _mediator = mediator;
             _mapper = mapper;
+            _validator = validator;
         }
 
         public async Task<IActionResult> OnGetAsync()
@@ -45,6 +49,16 @@ namespace BusLiner.MVC.Areas.Administration.Pages.Rides
         public async Task<IActionResult> OnPostAsync()
         {
             var mapped = _mapper.Map<UpdateRideCommand>(Ride);
+
+            var validationResult = await _validator.ValidateAsync(mapped);
+
+            if (!validationResult.IsValid)
+            {
+                validationResult.AddToModelStateWithObjectName(ModelState, "Ride");
+                DeparturePlaces = await _mediator.Send(new GetAllDeparturePlacesQuery());
+                ArrivalPlaces = await _mediator.Send(new GetAllArrivalPlacesQuery());
+                return Page();
+            }
 
             await _mediator.Send(mapped);
 
