@@ -37,8 +37,6 @@ namespace BusLiner.MVC.Controllers
 
         public async Task<IActionResult> Order(CreateOrderQuery request)
         {
-            request.Total = Ride.Price * request.TicketsOrdered + request.AdditionalBaggage * 65;
-
             request.RideId = Ride.Id;
 
             var validationResult = await _validator.ValidateAsync(request);

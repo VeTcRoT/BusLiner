@@ -24,6 +24,10 @@ namespace BusLiner.Application.Features.Orders.Commands.CreateOrder
 
         public async Task Handle(CreateOrderQuery request, CancellationToken cancellationToken)
         {
+            var ride = await _unitOfWork.RideRepository.GetByIdAsync(request.RideId);
+
+            request.Total = ride.Price * request.TicketsOrdered + request.AdditionalBaggage * 65;
+
             var mappedRequest = _mapper.Map<Order>(request);
 
             await _unitOfWork.OrderRepository.AddAsync(mappedRequest);

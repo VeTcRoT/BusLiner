@@ -35,15 +35,12 @@ namespace BusLiner.Application.Features.Orders.Commands.CreateOrder
                 .GreaterThanOrEqualTo(1).WithMessage("Мінімальне значення к-сті замовлених квитків є 1.")
                 .LessThanOrEqualTo(5).WithMessage("Не можна замовити більше 5 квитків.");
 
-            //RuleFor(o => o.AdditionalBaggage)
-            //    .NotEmpty().WithMessage("{PropertyName} is required.");
-
             RuleFor(o => o)
                 .Must(IsAdditionalBaggageNumberValid).WithMessage("К-сть додаткового багажу немає перевищувати к-сть білетів помножену на 2.");
         }
         private bool IsAdditionalBaggageNumberValid(CreateOrderQuery order)
         {
-            return order.TicketsOrdered * 2 >= order.AdditionalBaggage;
+            return order.AdditionalBaggage >= 0 && order.TicketsOrdered * 2 >= order.AdditionalBaggage;
         }
     }
 }
