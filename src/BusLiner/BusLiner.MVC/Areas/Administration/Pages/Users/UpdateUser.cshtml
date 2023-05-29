@@ -13,10 +13,15 @@
             </div>
             <span asp-validation-for="UserCommand.Email" class="text-danger admin-validation"></span>
             <div class="manage-account__content-option-email_change-wrap-form-input">
+                <label asp-for="UserCommand.Password" class="form-label">Новий пароль(опційно)</label>
+                <input asp-for="UserCommand.Password" class="form-control" aria-required="true" />
+            </div>
+            <span asp-validation-for="UserCommand.Password" class="text-danger admin-validation"></span>
+            <div class="manage-account__content-option-email_change-wrap-form-input">
                 <label asp-for="UserCommand.EmailConfirmed" class="form-label">Підтвердити email</label>
                 <select asp-for="UserCommand.EmailConfirmed">
-                    <option value="0">Ні</option>
-                    <option value="1">Так</option>
+                    <option value="False">Ні</option>
+                    <option value="True">Так</option>
                 </select>
             </div>
             <span asp-validation-for="UserCommand.EmailConfirmed" class="text-danger admin-validation"></span>

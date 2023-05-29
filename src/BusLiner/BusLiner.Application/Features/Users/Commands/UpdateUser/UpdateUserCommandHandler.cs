@@ -31,6 +31,13 @@ namespace BusLiner.Application.Features.Users.Commands.UpdateUser
                 await _emailStore.SetEmailAsync(user, request.Email, CancellationToken.None);
             }
 
+            if (!string.IsNullOrEmpty(request.Password))
+            {
+                var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+
+                await _userManager.ResetPasswordAsync(user, token, request.Password);
+            }
+
             user.EmailConfirmed = request.EmailConfirmed == 1 ? true : false;
 
             await _userManager.UpdateAsync(user);

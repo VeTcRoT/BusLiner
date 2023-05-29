@@ -6,5 +6,6 @@
         public string Email { get; set; } = string.Empty;
         public bool EmailConfirmed { get; set; }
         public string? Role { get; set; }
+        public string? Password { get; set; }
     }
 }
